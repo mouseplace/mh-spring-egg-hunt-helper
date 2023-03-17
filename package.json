@@ -1,0 +1,20 @@
+{
+  "name": "mh-spring-egg-hunt-helper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mh-spring-egg-hunt-helper.user.js",
+  "scripts": {
+    "lint:js": "npx eslint *.js",
+    "lint:js:fix": "npx eslint *.js --fix",
+    "lint:md": "eslint *.md",
+    "lint": "npm run lint:js && npm run lint:md",
+    "lint:fix": "npm run lint:js:fix"
+  },
+  "author": "Brad Parbs <brad@bradparbs.com> (https://bradparbs.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^12.9.0",
+    "eslint": "^8.16.0",
+    "eslint-plugin-markdownlint": "^0.4.0"
+  }
+}
