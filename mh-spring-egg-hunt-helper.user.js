@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.1.1
+// @version      1.1.2
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -984,7 +984,7 @@
 
   const getEggs = async () => {
     const response = await doRequest('managers/ajax/events/spring_hunt.php', { action: 'get_eggs' });
-    if (response.spring_hunt_egg_info === undefined) {
+    if (! response || (response && ! response.spring_hunt_egg_info)) {
       return [];
     }
 
@@ -1473,7 +1473,7 @@
     const eggsWrapper = document.querySelector('.eggs-wrapper');
     const eggWrappers = eggsWrapper.querySelectorAll('.egg-wrapper');
 
-    if (! eggWrapper || ! eggWrappers) {
+    if (! eggsWrapper || ! eggWrappers) {
       return;
     }
 
