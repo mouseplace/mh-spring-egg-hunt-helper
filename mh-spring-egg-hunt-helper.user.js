@@ -1,20 +1,23 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.0.0
+// @version      1.1.0
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
 // @namespace    bradp
 // @match        https://www.mousehuntgame.com/*
-// @icon         https://brrad.com/mouse.png
+// @icon         https://i.mouse.rip/mouse.png
 // @grant        none
-// @run-at       document-end
 // @require      https://cdn.jsdelivr.net/npm/mousehunt-utils@1.3.0/mousehunt-utils.js
+// @run-at       document-end
 // ==/UserScript==
 
 (function () {
   'use strict';
 
+  /**
+   * The ways to get each egg.
+   */
   const ways = {
     // Interface / Misc.
     century_egg_convertible: 'Visit King\'s Crowns Tab of your <a href=\'/profile.php\'>Hunter Profile</a> if you have at least 100 silver crowns.',
@@ -241,6 +244,9 @@
     zzt_egg_convertible: { mice: ['Mystic Rook', 'Technic Rook'] },
   };
 
+  /**
+   * Transparent and highres images for all the eggs.
+   */
   const eggImages = {
     '21k_golden_egg_convertible': 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/3ada6ff18f89d020908e35fee2de7a45.png?cv=2',
     abominable_snow_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/9dd4706d4ca6b28332046ba180f69287.png?cv=2',
@@ -465,17 +471,19 @@
     zzt_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/2337b5b8e14a4ebf668139a750770f10.png?cv=2',
 
     // Removed backgrounds
-    '2011_spring_hunt_egg_6': 'https://i.imgur.com/5cpBHvK.png',
-    black_widow_egg_convertible: 'https://i.imgur.com/2d4uUSg.png',
-    caring_egg_convertible: 'https://i.imgur.com/tfdsvde.png',
-    friendly_egg_convertible: 'https://i.imgur.com/aHHUUiK.png',
-    ful_mina_egg_convertible: 'https://i.imgur.com/9fG7MAF.png',
-    realm_ripper_egg_convertible: 'https://i.imgur.com/biJIWOz.png',
-    sharing_egg_convertible: 'https://i.imgur.com/T9nLnJV.png',
+    '2011_spring_hunt_egg_6': 'https://i.mouse.rip/2011-spring-hunt-egg.png',
+    black_widow_egg_convertible: 'https://i.mouse.rip/black-widow-egg.png',
+    caring_egg_convertible: 'https://i.mouse.rip/caring-egg.png',
+    friendly_egg_convertible: 'https://i.mouse.rip/friendly-egg.png',
+    ful_mina_egg_convertible: 'https://i.mouse.rip/ful-mina-egg.png',
+    realm_ripper_egg_convertible: 'https://i.mouse.rip/realm-ripper-egg.png',
+    sharing_egg_convertible: 'https://i.mouse.rip/sharing-egg.png',
   };
 
+  // Add the styles
   addStyles(`#overlayPopup.mh-dialog-book-wrapper .jsDialog.top,
-  #overlayPopup.mh-dialog-book-wrapper .jsDialog.bottom {
+  #overlayPopup.mh-dialog-book-wrapper .jsDialog.bottom,
+  #overlayPopup.mh-dialog-book-wrapper .jsDialogContainer .suffix {
     display: none;
   }
 
@@ -554,7 +562,7 @@
   }
 
   .book-wrapper {
-    background: url(https://i.imgur.com/r7Sxq7a.png) 50% 0 no-repeat;
+    background: url(https://i.mouse.rip/book-wrapper.png) 50% 0 no-repeat;
     width: 744px;
     height: 822px;
   }
@@ -565,7 +573,7 @@
     margin-left: 0;
     height: 75px;
     box-sizing: border-box;
-    background: url(https://i.imgur.com/yYb9gy4.png) 0 0 no-repeat;
+    background: url(https://i.mouse.rip/book-header.png) 0 0 no-repeat;
     box-shadow: 0px 5px 4px -5px #d2a155;
     padding-bottom: 7px;
     width: 326px;
@@ -952,6 +960,26 @@
   .no-eggs-found-hidden {
     display: none;
   }
+
+  #mh-custom-icon-egg {
+    position: absolute;
+    top: 5px;
+    left: -27px;
+    transition: .125s;
+    filter: drop-shadow(1px 1px 1px #debb6c);
+    z-index: 1;
+  }
+
+  #mh-custom-icon-egg:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(1px 1px 6px #debb6c);
+  }
+
+  #mh-custom-icon-egg img {
+    width: 30px;
+    height: 30px;
+    filter: drop-shadow(2px 4px 6px #debe6b);
+  }
   `);
 
   const getEggs = async () => {
@@ -982,7 +1010,7 @@
 
       if ('mice' === type) {
         const link = document.createElement('a');
-        link.setAttribute('href', `https://mhct.win/attractions.php?mouse_name=${ text }`);
+        link.setAttribute('href', `https://mhct.win/attractions.php?mouse_name=${text}`);
         link.setAttribute('target', '_blank');
         link.innerHTML = text;
 
@@ -1126,7 +1154,7 @@
 
     const collectedText = makeElement('div', 'collected-text');
     if (egg.is_found) {
-      makeElement('div', 'egg-collected', `You have collected this egg, <a href="#" onclick="hg.views.ItemView.show('${ egg.type }'); return false;">${ egg.quantity } in your inventory</a>.`, collectedText);
+      makeElement('div', 'egg-collected', `You have collected this egg, <a href="#" onclick="hg.views.ItemView.show('${egg.type}'); return false;">${egg.quantity} in your inventory</a>.`, collectedText);
     } else {
       makeElement('div', 'egg-not-collected', 'You have not collected this egg.', collectedText);
     }
@@ -1224,7 +1252,7 @@
     const rightSideHeaderSubTitle = makeElement('div', 'right-subheader');
 
     const foundEggs = eggs.eggs.filter((egg) => egg.is_found).length;
-    rightSideHeaderSubTitle.innerText = `${ foundEggs } / ${ eggs.eggs.length } eggs found`;
+    rightSideHeaderSubTitle.innerText = `${foundEggs} / ${eggs.eggs.length} eggs found`;
 
     rightHeaderText.appendChild(rightSideHeaderTitle);
     rightSideHeader.appendChild(rightHeaderText);
@@ -1314,7 +1342,7 @@
     eggToolLinks.setAttribute('href', '#');
 
     const eggToolImage = document.createElement('img');
-    eggToolImage.src = 'https://i.imgur.com/Erp9njH.png';
+    eggToolImage.src = 'https://i.mouse.rip/eggtool.png';
     eggToolImage.alt = 'Egg Tool';
     eggToolImage.classList.add('egg-tool-image');
 
@@ -1488,8 +1516,8 @@
     rightSideFull.appendChild(rightSide);
 
     popup.addToken('{*content*}', `<div class="book-wrapper">
-      ${ leftWrapper.outerHTML }
-      ${ rightSideFull.outerHTML }
+      ${leftWrapper.outerHTML}
+      ${rightSideFull.outerHTML}
       <a href="#" class="halloweenBoilingCauldronRecipeView-doneButton egg-close" onclick="activejsDialog.hide(); return false;">Close</a>
     </div>`);
 
@@ -1501,31 +1529,18 @@
     addBackAction();
   };
 
-  // Floating egg icon that changes when you click it.
-  addStyles(`#mh-custom-icon-egg {
-    position: absolute;
-    top: 5px;
-    left: -27px;
-    transition: .125s;
-    filter: drop-shadow(1px 1px 1px #debb6c);
-    z-index: 1;
-  }
-
-  #mh-custom-icon-egg:hover {
-    transform: scale(1.2);
-    filter: drop-shadow(1px 1px 6px #debb6c);
-  }
-
-  #mh-custom-icon-egg img {
-    width: 30px;
-    height: 30px;
-    filter: drop-shadow(2px 4px 6px #debe6b);
-  }`, 'mh-egg-helper-styles');
-
+  /**
+   * Get a random egg image.
+   *
+   * @return {string} The URL of the egg image.
+   */
   const getRandomEggImage = () => {
     return Object.values(eggImages)[ Math.floor(Math.random() * Object.values(eggImages).length) ];
   };
 
+  /**
+   * Change the egg icon to a random egg image.
+   */
   const changeEggImage = () => {
     const icon = document.querySelector('#mh-egg-icon');
     if (icon) {
@@ -1533,7 +1548,10 @@
     }
   };
 
-  const addIcon = () => {
+  /**
+   * Add the egg icon.
+   */
+  const addEggIcon = () => {
     const menu = document.querySelector('.mousehuntHud-menu');
     if (! menu) {
       return;
@@ -1546,6 +1564,7 @@
       changeEggImage();
     });
 
+    // TODO: maybe enable this?
     // item.addEventListener('dblclick', () => {
     // 	bookPopup();
     // });
@@ -1564,6 +1583,8 @@
   let environments = [];
   const eggsData = [];
 
+  addEggIcon();
+
   addSubmenuItem({
     menu: 'camp',
     label: 'Spring Egg Hunt Helper',
@@ -1581,200 +1602,75 @@
     });
   }
 
-  addIcon();
+  const showOnboardingArrow = (options) => {
+    options = options || {};
 
-  const welcome = (version = '0.0.0') => {
-    const hasSeenWelcome = getSetting('mh-egg-helper', false);
-
-    if (hasSeenWelcome) {
+    if (! options.highlight) {
       return;
     }
 
-    addStyles(`
-      #overlayPopup.mh-welcome .jsDialog.top,
-      #overlayPopup.mh-welcome .jsDialog.bottom,
-      #overlayPopup.mh-welcome .jsDialog.background {
-      background: none;
-      margin: 0;
-      padding: 0;
-      }
+    options.arrowPosition = options.arrowPosition || 'topLeft';
 
-      #overlayPopup.mh-welcome .jsDialogContainer .prefix,
-      #overlayPopup.mh-welcome .jsDialogContainer .content {
-      padding: 0;
-      }
+    if (options.beforeShow) {
+      options.beforeShow();
+    }
 
-      #overlayPopup.mh-welcome #jsDialogClose,
-      #overlayPopup.mh-welcome .jsDialogContainer .suffix {
-      display: none;
-      }
+    const highlightClick = document.querySelector(options.highlight);
+    if (highlightClick) {
+      highlightClick.addEventListener('click', () => {
+        console.log('🥚️ Clicked highlight'); // eslint-disable-line no-console
+        onboardingView.hideBouncyArrow();
+        if (options.onClose) {
+          options.onClose();
+        }
+      });
+    }
 
-      #overlayPopup.mh-welcome .jsDialogContainer {
-      background-image: url(https://www.mousehuntgame.com/images/ui/newsposts/np_border.png);
-      background-repeat: repeat-y;
-      background-size: 100%;
-      padding: 0 20px;
-      }
+    const onboardingView = new hg.views.OnboardingTutorialView;
+    const message = {
+      content: {
+        body: onboardingView.wrapInfoArrow(options.content, options.next || 'Next'),
+      },
+      highlight_dom: null,
+      on_show_callback: () => {
+        onboardingView.showBouncyArrow(options.pointArrow, options.arrowPosition);
+        if (options.onShow) {
+          options.onShow();
+        }
+      },
+      on_close_callback: () => {
+        onboardingView.hideBouncyArrow();
+        if (options.onClose) {
+          options.onClose();
+        }
+      },
+      css_class: 'larryCircle',
+      show_overlay: true,
+    };
 
-      #overlayPopup.mh-welcome .jsDialogContainer:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: -80px;
-      background-image: url(https://www.mousehuntgame.com/images/ui/newsposts/np_header.png);
-      background-size: 100%;
-      background-repeat: no-repeat;
-      height: 100px;
-      }
-
-      #overlayPopup.mh-welcome .jsDialogContainer:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 100%;
-      background-image: url(https://www.mousehuntgame.com/images/ui/newsposts/np_footer.png);
-      background-size: 100%;
-      background-repeat: no-repeat;
-      height: 126px;
-      }
-
-      .mh-welcome .mh-title {
-      background: url(https://www.mousehuntgame.com/images/ui/larry_gifts/ribbon.png?asset_cache_version=2) no-repeat;
-      width: 412px;
-      height: 90px;
-      font-family: Georgia,serif;
-      font-weight: 700;
-      text-align: center;
-      font-size: 26px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 20px auto 0 auto;
-      color: #7d3b0a;
-      text-shadow: 1px 1px 1px #e9d5a2;
-      position: relative;
-      top: -90px;
-      }
-
-      .mh-welcome .mh-inner-wrapper {
-      display: flex;
-      padding: 5px 10px 25px 10px;
-      margin-top: -90px;
-      }
-
-      .mh-welcome .text {
-      text-align: left;
-      margin-left: 30px;
-      line-height: 18px;
-      }
-
-      .mh-welcome .text p {
-      font-size: 13px;
-      line-height: 19px;
-      }
-
-      .mh-welcome .mh-inner-title {
-      font-weight: 700;
-      font-size: 1.5em;
-      padding: 10px 0;
-      }
-
-      .mh-welcome .mh-button-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      }
-
-      .mh-welcome .mh-button {
-      background: linear-gradient(to bottom,#fff600, #f4e830);
-      box-shadow: 0 0 10px 1px #d6d13b inset;
-      font-size: 1.5em;
-      padding: 10px 50px;
-      border: 1px solid #000;
-      border-radius: 5px;
-      color: #000;
-      }
-
-      .mh-welcome .mh-intro-text {
-      margin: 2em 1em;
-      font-size: 15px;
-      line-height: 25px;
-      }
-
-      .mh-welcome-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      margin: 1em;
-      gap: 2em;
-      }
-
-      .mh-welcome-column h2 {
-      border-bottom: 1px solid #cba36d;
-      margin-bottom: 1em;
-      font-size: 16px;
-      color: #7d3b0a;
-      }
-
-      .mh-welcome-column ul {
-      list-style: disc;
-      margin-left: 3em;
-      }
-    `);
-
-    // Build the markup with our content.
-    const markup = `<div class="mh-welcome-wrapper">
-      <h1 class="mh-title">Spring Egg Hunt Helper</h1>
-      <div class="mh-inner-wrapper">
-      <div class="text">
-        <div class="mh-intro-text">
-        <p>Thanks for installing the Spring Egg Hunt Helper userscript!</p>
-        <p>This userscript is a replacement for the normal Eggscavator with a lot more features and a much better user experience.</p>
-        </div>
-        <div class="mh-welcome-columns">
-        <div class="mh-welcome-column">
-          <h2>How to Use</h2>
-          <p>Simply click on the 'Spring Egg Hunt Helper' menu item under the 'Camp' tab in the menu bar.
-        </div>
-        <div class="mh-welcome-column">
-          <h2>Support & Suggestions</h2>
-          <p>For support or any suggestions for improvements, please visit <a href="https://discord.com/channels/275500976662773761/355474934601875457">#community-tools</a> in the <a href="https://discordapp.com/invite/Ya9zEdk">MouseHunt Discord</a>.</p>
-        </div>
-        </div>
-      </div>
-      </div>
-      <div class="mh-button-wrapper">
-      <a id="mh-welcome-continue" class="mh-button">Continue</a>
-      </div>
-        </div>`;
-
-    // Initiate the popup.
-    const welcomePopup = createPopup({
-      hasCloseButton: false,
-      template: 'ajax',
-      content: markup,
-      show: false,
-    });
-
-    // Set more of our tokens.
-    welcomePopup.addToken('{*prefix*}', '');
-    welcomePopup.addToken('{*suffix*}', '');
-
-    // Set the attribute and show the popup.
-    welcomePopup.setAttributes({ className: 'mh-welcome' });
-
-    // If we want to show the popup, show it.
-    welcomePopup.show();
-
-    // Add the event listener to the continue button.
-    const continueButton = document.getElementById('mh-welcome-continue');
-    continueButton.addEventListener('click', () => {
-      saveSetting('mh-egg-helper', true);
-      saveSetting('mh-egg-helper-version', version);
-      welcomePopup.hide();
-    });
+    hg.views.MessengerView.addMessage(message);
+    hg.views.MessengerView.go();
   };
 
-  welcome();
+  showOnboardingArrow({
+    content: 'Welcome to the Spring Egg Hunt Helper! Click here to open the book.',
+    highlight: '.mousehuntHud-menu ul li.camp',
+    pointArrow: '.mousehuntHud-menu ul li.camp',
+    arrowPosition: 'topLeft',
+    onClose: () => {
+      console.log('🥚️ Closed onboarding'); // eslint-disable-line no-console
+    }
+  })
+
+
+  // TODO: uncomment this when the 1.4.0 of mousehunt-utils is released.
+  // createWelcomePopup({
+  //   id: 'mh-egg-helper',
+  //   title: 'Spring Egg Hunt Helper',
+  //   content: 'Thanks for installing the Spring Egg Hunt Helper userscript!',
+  //   columns: [
+  //     { title: 'How to Use', content: 'Simply click on the \'Spring Egg Hunt Helper\' menu item under the \'Camp\' tab in the menu bar.' },
+  //     { title: 'Support & Suggestions', content: 'For support or any suggestions for improvements, please visit <a href="https://discord.com/channels/275500976662773761/355474934601875457">#community-tools</a> in the <a href="https://discordapp.com/invite/Ya9zEdk">MouseHunt Discord</a>.' }
+  //   ]
+  // });
 }());
