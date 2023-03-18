@@ -1608,66 +1608,35 @@
     });
   }
 
-  const showOnboardingArrow = (options) => {
-    options = options || {};
-
-    if (! options.highlight) {
+  /**
+   * Create a Larry popup.
+   */
+  const createLarryWelcomePopup = () => {
+    if (getSetting('has-seen-egg-welcome-popup', false)) {
       return;
     }
 
-    options.arrowPosition = options.arrowPosition || 'topLeft';
+    addStyles('#overlayPopup.egg-larry-popup .jsDialogContainer { background-image: url(https://i.mouse.rip/larry-welcome.png);}');
 
-    if (options.beforeShow) {
-      options.beforeShow();
-    }
-
-    const highlightClick = document.querySelector(options.highlight);
-    if (highlightClick) {
-      highlightClick.addEventListener('click', () => {
-        console.log('🥚️ Clicked highlight'); // eslint-disable-line no-console
-        onboardingView.hideBouncyArrow();
-        if (options.onClose) {
-          options.onClose();
-        }
-      });
-    }
-
-    const onboardingView = new hg.views.OnboardingTutorialView;
     const message = {
-      content: {
-        body: onboardingView.wrapInfoArrow(options.content, options.next || 'Next'),
-      },
-      highlight_dom: null,
-      on_show_callback: () => {
-        onboardingView.showBouncyArrow(options.pointArrow, options.arrowPosition);
-        if (options.onShow) {
-          options.onShow();
-        }
-      },
-      on_close_callback: () => {
-        onboardingView.hideBouncyArrow();
-        if (options.onClose) {
-          options.onClose();
-        }
-      },
-      css_class: 'larryCircle',
+      content: { body: '<div class="custom-larry-popup"><span class="text">Thanks for installing the SEH Helper! <p>You can find it under the Camp menu.</span> <a href="#" id="spring-egg-hunt-helper" class="action jsDialogClose">Continue</a></div>' },
+      css_class: 'larryOffice egg-larry-popup',
       show_overlay: true,
+      is_modal: true
     };
 
     hg.views.MessengerView.addMessage(message);
     hg.views.MessengerView.go();
+
+    const larryPopup = document.querySelector('#spring-egg-hunt-helper');
+    if (larryPopup) {
+      larryPopup.addEventListener('click', () => {
+        saveSetting('has-seen-egg-welcome-popup', true);
+      });
+    }
   };
 
-  showOnboardingArrow({
-    content: 'Welcome to the Spring Egg Hunt Helper! Click here to open the book.',
-    highlight: '.mousehuntHud-menu ul li.camp',
-    pointArrow: '.mousehuntHud-menu ul li.camp',
-    arrowPosition: 'topLeft',
-    onClose: () => {
-      console.log('🥚️ Closed onboarding'); // eslint-disable-line no-console
-    }
-  })
-
+  createLarryWelcomePopup();
 
   // TODO: uncomment this when the 1.4.0 of mousehunt-utils is released.
   // createWelcomePopup({
