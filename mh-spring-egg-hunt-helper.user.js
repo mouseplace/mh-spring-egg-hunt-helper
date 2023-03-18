@@ -1039,8 +1039,14 @@
             // Force zoomed in all the way in case Travel Tweaks is installed.
             app.pages.TravelPage.zoomIn();
             app.pages.TravelPage.zoomIn();
-            app.pages.TravelPage.zoomIn();
-            app.pages.TravelPage.zoomIn();
+
+            setTimeout(() => {
+              app.pages.TravelPage.zoomIn();
+            }, 100);
+
+            setTimeout(() => {
+              app.pages.TravelPage.zoomIn();
+            }, 250);
 
             app.pages.TravelPage.showEnvironment(location);
           }, 500);
