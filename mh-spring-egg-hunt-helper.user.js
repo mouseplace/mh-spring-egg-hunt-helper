@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.1.0
+// @version      1.1.1
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -471,7 +471,7 @@
     zzt_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/2337b5b8e14a4ebf668139a750770f10.png?cv=2',
 
     // Removed backgrounds
-    '2011_spring_hunt_egg_6': 'https://i.mouse.rip/2011-spring-hunt-egg.png',
+    '2011_spring_hunt_egg_6': 'https://i.mouse.rip/2011-spring-hunt.png',
     black_widow_egg_convertible: 'https://i.mouse.rip/black-widow-egg.png',
     caring_egg_convertible: 'https://i.mouse.rip/caring-egg.png',
     friendly_egg_convertible: 'https://i.mouse.rip/friendly-egg.png',
