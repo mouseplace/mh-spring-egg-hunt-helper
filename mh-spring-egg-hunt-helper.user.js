@@ -1650,7 +1650,7 @@
     'SEH Helper: Ultimate Egg Master Mode',
     'seh-uem-mode',
     false,
-    'Track collected/uncollected by whether or not they\'re in your inventory.',
+    'Track collected/uncollected by whether or not they\'re in your inventory.'
   );
 
   createLarryWelcomePopup();
