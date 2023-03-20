@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.1.2
+// @version      1.2.0
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -991,6 +991,15 @@
     return response.spring_hunt_egg_info;
   };
 
+  const isFound = (egg) => {
+    isUEM = getSetting('seh-uem-mode', false);
+    if (isUEM) {
+      return egg.quantity > 0;
+    }
+
+    return egg.is_found;
+  };
+
   const makeAquireSection = (title, content, appendTo = null, type = null) => {
     const wrapper = document.createElement('div');
 
@@ -1159,7 +1168,7 @@
     detailsText.appendChild(aquire);
 
     const collectedText = makeElement('div', 'collected-text');
-    if (egg.is_found) {
+    if (isFound(egg)) {
       makeElement('div', 'egg-collected', `You have collected this egg, <a href="#" onclick="hg.views.ItemView.show('${egg.type}'); return false;">${egg.quantity} in your inventory</a>.`, collectedText);
     } else {
       makeElement('div', 'egg-not-collected', 'You have not collected this egg.', collectedText);
@@ -1206,7 +1215,7 @@
 
     eggs.eggs.forEach((egg) => {
       const itemWrapper = makeElement('div', 'egg-wrapper');
-      if (egg.is_found) {
+      if (isFound(egg)) {
         itemWrapper.classList.add('egg-wrapper-found');
       } else {
         itemWrapper.classList.add('egg-wrapper-unfound');
@@ -1257,7 +1266,7 @@
     rightSideHeaderTitle.innerText = 'Spring Egg Hunt';
     const rightSideHeaderSubTitle = makeElement('div', 'right-subheader');
 
-    const foundEggs = eggs.eggs.filter((egg) => egg.is_found).length;
+    const foundEggs = eggs.eggs.filter((egg) => isFound(egg)).length;
     rightSideHeaderSubTitle.innerText = `${foundEggs} / ${eggs.eggs.length} eggs found`;
 
     rightHeaderText.appendChild(rightSideHeaderTitle);
@@ -1300,7 +1309,7 @@
 
         eggLink.setAttribute('title', eggsData[ eggType ].name);
 
-        if (! eggsData[ eggType ].is_found) {
+        if (! isFound(eggsData[ eggType ])) {
           eggWrapper.classList.add('egg-wrapper-unfound');
         }
 
@@ -1536,6 +1545,34 @@
   };
 
   /**
+   * Create a Larry popup.
+   */
+  const createLarryWelcomePopup = () => {
+    if (getSetting('has-seen-egg-welcome-popup', false)) {
+      return;
+    }
+
+    addStyles('#overlayPopup.egg-larry-popup .jsDialogContainer { background-image: url(https://i.mouse.rip/larry-welcome.png);}');
+
+    const message = {
+      content: { body: '<div class="custom-larry-popup"><span class="text">Thanks for installing the SEH Helper! <p>You can find it under the Camp menu.</span> <a href="#" id="spring-egg-hunt-helper" class="action jsDialogClose">Continue</a></div>' },
+      css_class: 'larryOffice egg-larry-popup',
+      show_overlay: true,
+      is_modal: true
+    };
+
+    hg.views.MessengerView.addMessage(message);
+    hg.views.MessengerView.go();
+
+    const larryPopup = document.querySelector('#spring-egg-hunt-helper');
+    if (larryPopup) {
+      larryPopup.addEventListener('click', () => {
+        saveSetting('has-seen-egg-welcome-popup', true);
+      });
+    }
+  };
+
+  /**
    * Get a random egg image.
    *
    * @return {string} The URL of the egg image.
@@ -1588,6 +1625,7 @@
   let popup = null;
   let environments = [];
   const eggsData = [];
+  let isUEM = false;
 
   addEggIcon();
 
@@ -1608,44 +1646,12 @@
     });
   }
 
-  /**
-   * Create a Larry popup.
-   */
-  const createLarryWelcomePopup = () => {
-    if (getSetting('has-seen-egg-welcome-popup', false)) {
-      return;
-    }
-
-    addStyles('#overlayPopup.egg-larry-popup .jsDialogContainer { background-image: url(https://i.mouse.rip/larry-welcome.png);}');
-
-    const message = {
-      content: { body: '<div class="custom-larry-popup"><span class="text">Thanks for installing the SEH Helper! <p>You can find it under the Camp menu.</span> <a href="#" id="spring-egg-hunt-helper" class="action jsDialogClose">Continue</a></div>' },
-      css_class: 'larryOffice egg-larry-popup',
-      show_overlay: true,
-      is_modal: true
-    };
-
-    hg.views.MessengerView.addMessage(message);
-    hg.views.MessengerView.go();
-
-    const larryPopup = document.querySelector('#spring-egg-hunt-helper');
-    if (larryPopup) {
-      larryPopup.addEventListener('click', () => {
-        saveSetting('has-seen-egg-welcome-popup', true);
-      });
-    }
-  };
+  addSetting(
+    'SEH Helper: Ultimate Egg Master Mode',
+    'seh-uem-mode',
+    false,
+    'Track collected/uncollected by whether or not they\'re in your inventory.',
+  );
 
   createLarryWelcomePopup();
-
-  // TODO: uncomment this when the 1.4.0 of mousehunt-utils is released.
-  // createWelcomePopup({
-  //   id: 'mh-egg-helper',
-  //   title: 'Spring Egg Hunt Helper',
-  //   content: 'Thanks for installing the Spring Egg Hunt Helper userscript!',
-  //   columns: [
-  //     { title: 'How to Use', content: 'Simply click on the \'Spring Egg Hunt Helper\' menu item under the \'Camp\' tab in the menu bar.' },
-  //     { title: 'Support & Suggestions', content: 'For support or any suggestions for improvements, please visit <a href="https://discord.com/channels/275500976662773761/355474934601875457">#community-tools</a> in the <a href="https://discordapp.com/invite/Ya9zEdk">MouseHunt Discord</a>.' }
-  //   ]
-  // });
 }());
