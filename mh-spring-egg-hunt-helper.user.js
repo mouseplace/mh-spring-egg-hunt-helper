@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.2.0
+// @version      1.2.1
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -469,6 +469,14 @@
     zokor_treasury_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/47ee91aa08ad6592e89c95fc6044c7de.png?cv=2',
     zurreal_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/3896a1b68260eb95119fc54c35e7e95e.png?cv=2',
     zzt_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/2337b5b8e14a4ebf668139a750770f10.png?cv=2',
+    agriculture_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/large/810d262bc2fe10a3c99b59993e8dd737.png?cv=2',
+    archduke_eggsweeper_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/large/5ac4d6da9f8e28d01adaccec620cb1d2.png?cv=2',
+    architeuthulhu_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/large/ef6336b16c27cc3eb83d6babb62c54b4.png?cv=2',
+    chummy_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/large/22022f49a2971100620162510f45a493.png?cv=2',
+    dusted_archduke_eggsweeper_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/large/7d1b3cf75058c66f8a18ad40ed4bafae.png?cv=2',
+    monstrous_midge_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/large/db525f45235eb31938088e276beed622.png?cv=2',
+    mythweaver_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/large/0a57f3c7f8e7f3b031b740280e54ab61.png?cv=2',
+    wordy_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/large/c5bc3c1bd62a3c7e9a8c3013b80bfa18.png?cv=2',
 
     // Removed backgrounds
     '2011_spring_hunt_egg_6': 'https://i.mouse.rip/2011-spring-hunt.png',
