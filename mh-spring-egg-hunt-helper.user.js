@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.2.1
+// @version      1.2.2
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -37,6 +37,7 @@
     bottled_wind_egg_convertible: 'Hunt with Bottled Wind active.',
     glowing_oil_egg_convertible: 'Hunt with Lanter Oil active.',
     queso_wild_tonic_egg_convertible: 'Hunt with Wild Tonic active.',
+    chummy_egg_convertible: 'Hunt with Chum activated',
 
     // Misc
     deep_sea_egg_convertible: 'Dive more than 50,000 meters.',
@@ -44,6 +45,7 @@
     stealthy_egg_convertible: 'Have 100 or more stealth.',
     storm_egg_convertible: 'Catch a mouse with Lightning Aura active or catch a mouse with Rain and Wind at 100%.',
     wind_egg_convertible: 'Charge the Wind Meter to 100%.',
+    wordy_egg_convertible: 'Claim your writing rewards when finishing an encyclopedia.',
 
     // Floating Islands.
     ancient_jade_egg_convertible: 'Hunt on any Island with one or more Ancient Jade tiles',
@@ -242,6 +244,9 @@
     white_egg_convertible: { mice: ['White'] },
     zurreal_egg_convertible: { mice: ['Zurreal the Eternal'] },
     zzt_egg_convertible: { mice: ['Mystic Rook', 'Technic Rook'] },
+    mythweaver_egg_convertible: { mice: ['Mythweaver'] },
+    monstrous_midge_egg_convertible: { mice: ['Monstrous Midge'] },
+    architeuthulhu_egg_convertible: { mice: ['Architeuthulhu'] },
   };
 
   /**
@@ -1276,6 +1281,9 @@
 
     const foundEggs = eggs.eggs.filter((egg) => isFound(egg)).length;
     rightSideHeaderSubTitle.innerText = `${foundEggs} / ${eggs.eggs.length} eggs found`;
+    if (isUEM) {
+      rightSideHeaderSubTitle.innerText += ' (UEM mode)';
+    }
 
     rightHeaderText.appendChild(rightSideHeaderTitle);
     rightSideHeader.appendChild(rightHeaderText);
