@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.2.2
+// @version      1.2.3
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -48,35 +48,35 @@
     wordy_egg_convertible: 'Claim your writing rewards when finishing an encyclopedia.',
 
     // Floating Islands.
-    ancient_jade_egg_convertible: 'Hunt on any Island with one or more Ancient Jade tiles',
-    empyrean_seal_egg_convertible: 'Hunt on any Island with one or more Empyrean Seal tiles',
-    loot_cache_egg_convertible: 'Hunt on any Island with one or more Loot Cache tiles',
-    sky_gem_egg_convertible: 'Hunt on any Island with two or more Sky Glass tiles',
-    sky_ore_egg_convertible: 'Hunt on any Island with two or more Sky Ore tiles',
-    sky_pirate_egg_convertible: 'Hunt on any Island with one more Sky Pirate Den tiles',
-    sky_sprocket_egg_convertible: 'Catch a Paragon on any Island with a Sky Sprocket tile',
-    skysoft_silk_egg_convertible: 'Catch a Paragon on any Island with a Skysoft Silk tile',
-    enchanted_wing_egg_convertible: 'Catch a Paragon on any Island with a Enchanted Wing tile',
-    cloudstone_bangle_egg_convertible: 'Catch a Paragon on any Island with a Cloudstone Bangle tile',
-    sky_conqueror_egg_convertible: 'Clear 40 steps on a Low Altitude Island or High Altitude Island',
-    sky_explorer_egg_convertible: 'Clear 40 steps on any Island or Vault',
+    ancient_jade_egg_convertible: 'Hunt on any Island with one or more Ancient Jade tiles.',
+    empyrean_seal_egg_convertible: 'Hunt on any Island with one or more Empyrean Seal tiles.',
+    loot_cache_egg_convertible: 'Hunt on any Island with one or more Loot Cache tiles.',
+    sky_gem_egg_convertible: 'Hunt on any Island with two or more Sky Glass tiles.',
+    sky_ore_egg_convertible: 'Hunt on any Island with two or more Sky Ore tiles.',
+    sky_pirate_egg_convertible: 'Hunt on any Island with one more Sky Pirate Den tiles.',
+    sky_sprocket_egg_convertible: 'Catch a Paragon on any Island with a Sky Sprocket tile.',
+    skysoft_silk_egg_convertible: 'Catch a Paragon on any Island with a Skysoft Silk tile.',
+    enchanted_wing_egg_convertible: 'Catch a Paragon on any Island with a Enchanted Wing tile.',
+    cloudstone_bangle_egg_convertible: 'Catch a Paragon on any Island with a Cloudstone Bangle tile.',
+    sky_conqueror_egg_convertible: 'Clear 40 steps on a Low Altitude Island or High Altitude Island.',
+    sky_explorer_egg_convertible: 'Clear 40 steps on any Island or Vault.',
 
     // Vrift
-    puppet_floor_egg_convertible: 'Catch a mouse on a Puppet Floor (1)',
-    thief_floor_egg_convertible: 'Catch a mouse on a Thief Floor (2)',
-    melee_floor_egg_convertible: 'Catch a mouse on a Melee Floor (3)',
-    bard_floor_egg_convertible: 'Catch a mouse on a Bard Floor (4)',
-    magic_floor_egg_convertible: 'Catch a mouse on a Magic Floor (5)',
-    noble_floor_egg_convertible: 'Catch a mouse on a Noble Floor (6)',
-    dust_floor_egg_convertible: 'Catch a mouse on a Dusty Floor (7)',
-    tower_secret_egg_convertible: { text: 'Catch a Champion mouse with Secret Research activated', mice: ['Shade of the Eclipse'] },
-    tower_sigil_egg_convertible: { text: 'Catch a Champion mouse with Sigil Hunter activated', mice: ['Shade of the Eclipse'] },
-    tower_siphon_egg_convertible: { text: 'Catch a Champion mouse with Siphon activated', mice: ['Shade of the Eclipse'] },
+    puppet_floor_egg_convertible: 'Catch a mouse on a Puppet Floor (1).',
+    thief_floor_egg_convertible: 'Catch a mouse on a Thief Floor (2).',
+    melee_floor_egg_convertible: 'Catch a mouse on a Melee Floor (3).',
+    bard_floor_egg_convertible: 'Catch a mouse on a Bard Floor (4).',
+    magic_floor_egg_convertible: 'Catch a mouse on a Magic Floor (5).',
+    noble_floor_egg_convertible: 'Catch a mouse on a Noble Floor (6).',
+    dust_floor_egg_convertible: 'Catch a mouse on a Dusty Floor (7).',
+    tower_secret_egg_convertible: { text: 'Catch a Champion mouse with Secret Research activated.', mice: ['Shade of the Eclipse'] },
+    tower_sigil_egg_convertible: { text: 'Catch a Champion mouse with Sigil Hunter activated.', mice: ['Shade of the Eclipse'] },
+    tower_siphon_egg_convertible: { text: 'Catch a Champion mouse with Siphon activated.', mice: ['Shade of the Eclipse'] },
 
-    zokor_fealty_egg_convertible: 'Catch a mouse in a Fealty District',
-    zokor_scholar_egg_convertible: 'Catch a mouse in a Scholar District',
-    zokor_tech_egg_convertible: 'Catch a mouse in a Tech District',
-    zokor_treasury_egg_convertible: 'Catch a mouse in a Treasury District',
+    zokor_fealty_egg_convertible: 'Catch a mouse in a Fealty District.',
+    zokor_scholar_egg_convertible: 'Catch a mouse in a Scholar District.',
+    zokor_tech_egg_convertible: 'Catch a mouse in a Tech District.',
+    zokor_treasury_egg_convertible: 'Catch a mouse in a Treasury District.',
 
     // Mice.
     '2011_spring_hunt_egg_6': { mice: ['Carefree Cook', 'Chocolate Gold Foil', 'Chocolate Overload', 'Coco Commander', 'Egg Painter', 'Egg Scrambler', 'Eggscavator', 'Eggsplosive Scientist', 'Eggsquisite Entertainer', 'Hardboiled', 'Hare Razer', 'Onion Chopper', 'Pan Slammer', 'Sinister Egg Painter', 'Spring Sprig'] },
@@ -1518,9 +1518,7 @@
     popup.addToken('{*prefix*}', '');
     popup.addToken('{*suffix*}', '');
 
-    console.log('🥚️ Making eggs'); // eslint-disable-line no-console
     const eggs = await getEggs();
-    console.log(eggs); // eslint-disable-line no-console
 
     const leftWrapper = makeElement('div', 'book-left-side');
 
