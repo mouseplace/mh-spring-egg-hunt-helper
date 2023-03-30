@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.2.4
+// @version      1.2.5
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -8,7 +8,7 @@
 // @match        https://www.mousehuntgame.com/*
 // @icon         https://i.mouse.rip/mouse.png
 // @grant        none
-// @require      https://cdn.jsdelivr.net/npm/mousehunt-utils@1.3.0/mousehunt-utils.js
+// @require      https://cdn.jsdelivr.net/npm/mousehunt-utils@1.4.0/mousehunt-utils.js
 // @run-at       document-end
 // ==/UserScript==
 
@@ -1013,6 +1013,10 @@
     return egg.is_found;
   };
 
+  const isScrambles = () => {
+    return getSetting('seh-scrambles', 'scrambles', false);
+  };
+
   const makeAquireSection = (title, content, appendTo = null, type = null) => {
     const wrapper = document.createElement('div');
 
@@ -1586,6 +1590,35 @@
     }
   };
 
+  const doScrambles = async () => {
+    const resp = await doRequest('managers/ajax/users/userInventory.php', {
+      action: 'get_items',
+      'item_types[]': ['spring_chick_message_item'],
+    });
+
+    if (! (resp && resp.items && resp.items.length)) {
+      return false;
+    }
+
+    const scrambles = createPopup({
+      title: resp.items[ 0 ].name,
+      content: resp.items[ 0 ].message,
+      hasCloseButton: true,
+      template: 'singleItemLeft',
+      show: false,
+    });
+
+    scrambles.setAttributes({
+      className: resp.items[ 0 ].type
+    });
+
+    scrambles.addToken('{*items*}', {
+      0: resp.items[ 0 ]
+    }, 'imgArray');
+
+    scrambles.show();
+  };
+
   /**
    * Get a random egg image.
    *
@@ -1618,17 +1651,21 @@
     item.id = 'mh-custom-icon-egg';
 
     item.addEventListener('click', () => {
-      changeEggImage();
+      if (isScrambles()) {
+        doScrambles();
+      } else {
+        changeEggImage();
+      }
     });
-
-    // TODO: maybe enable this?
-    // item.addEventListener('dblclick', () => {
-    // 	bookPopup();
-    // });
 
     const icon = document.createElement('img');
     icon.id = 'mh-egg-icon';
-    icon.src = getRandomEggImage();
+    if (isScrambles()) {
+      icon.src = 'https://i.mouse.rip/scrambles.png';
+    } else {
+      icon.src = getRandomEggImage();
+    }
+
     icon.alt = 'Spring Egg Hunt Helper';
 
     item.appendChild(icon);
@@ -1665,6 +1702,13 @@
     'seh-uem-mode',
     false,
     'Track collected/uncollected by whether or not they\'re in your inventory.'
+  );
+
+  addSetting(
+    'SEH Helper: Scrambles',
+    'seh-scrambles',
+    false,
+    'Replace the random egg icon with Scrambles.'
   );
 
   createLarryWelcomePopup();
