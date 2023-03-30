@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.2.3
+// @version      1.2.4
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -178,7 +178,7 @@
     nerg_egg_convertible: { mice: ['Conqueror', 'Nerg Chieftain'] },
     nibbler_egg_convertible: { mice: ['Nibbler'] },
     night_egg_convertible: { mice: ['Alpha Weremouse', 'Arcane Summoner', 'Battering Ram', 'Cursed Taskmaster', 'Hypnotized Gunslinger', 'Meteorite Golem', 'Meteorite Mystic', 'Mischievous Wereminer', 'Night Shift Materials Manager', 'Night Watcher', 'Nightfire', 'Nightmancer', 'Reveling Lycanthrope', 'Wealthy Werewarrior', 'Werehauler', 'Wereminer'] },
-    nightshade_egg_convertible: { mice: ['Nightshade Masquerade', 'Nightshade Nanny', 'Nightshade Maiden'] },
+    nightshade_egg_convertible: { mice: ['Nightshade Flower Girl', 'Nightshade Masquerade', 'Nightshade Nanny', 'Nightshade Maiden'] },
     null_rift_egg_convertible: { mice: ['Menace of the Rift'] },
     overflowing_pump_egg_convertible: { mice: ['Sleepy Merchant', 'Tiny Saboteur', 'Pump Raider', 'Croquet Crusher', 'Queso Extractor', 'Queen Quesada'] },
     oxygen_baron_egg_convertible: { mice: ['Angelfish', 'Betta', 'Cuttle', 'Eel', 'Jellyfish', 'Koimaid', 'Manatee', 'Oxygen Baron', 'Puffer', 'Stingray'] },
@@ -395,7 +395,7 @@
     pirate_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/f090f1d15c31099933811f9e62e9967b.png?cv=2',
     pressure_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/57cbbbbf3aad8b4f6c23154fcc52e3d3.png?cv=2',
     puppet_floor_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/fdc64b997a42c129f5477beb1f793e70.png?cv=2',
-    pygmy_swarm_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/63071833f450e956eb573fef0e354e75.png?cv=2',
+    pygmy_swarm_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/large/38a70113bd6c96fa3214026165542cc9.png?cv=2',
     queso_nachore_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/08604f17934b7f86ca1d6f412794bf45.png?cv=2',
     queso_pump_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/d6740c2a9db6dee8c93e20fe3ad33763.png?cv=2',
     queso_spice_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/0aa0f0a7a93992365c775a2cbe273d09.png?cv=2',
