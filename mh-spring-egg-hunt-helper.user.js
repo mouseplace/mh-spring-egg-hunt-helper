@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.2.7
+// @version      1.2.8
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -354,8 +354,6 @@
     living_garden_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/7475dab32e3dc994c847bd84bbcc9f9a.png?cv=2',
     living_salt_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/803c34c5907dffe7e59866d4236d957b.png?cv=2',
     loot_cache_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/4ef0d0c6b7728fa4b4f7490168d268a2.png?cv=2',
-    low_charge_egg_convertible_2014: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/02b830757e5c69317075b2b1204c53a8.png?cv=2',
-    low_charge_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/3652ebe0b8222a95ea0837a4f43c3eca.png?cv=2',
     lucky_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/c0e7ed8da27272d0beaccd1cbde51a96.png?cv=2',
     m400_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/b2eb034c98964eab81ff7c4a235fc644.png?cv=2',
     mage_weaver_egg_convertible: 'https://www.mousehuntgame.com/images/items/convertibles/transparent_thumb/89ed7a2cda758c220d99be4028e077ae.png?cv=2',
