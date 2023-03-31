@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.2.5
+// @version      1.2.6
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -1594,7 +1594,7 @@
   };
 
   const isScrambles = () => {
-    return getSetting('seh-scrambles', 'scrambles', false);
+    return getSetting('seh-scrambles', false);
   };
 
   const makeAquireSection = (egg, title, content, appendTo = null, type = null) => {
