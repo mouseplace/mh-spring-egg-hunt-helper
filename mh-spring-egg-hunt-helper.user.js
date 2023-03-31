@@ -493,6 +493,579 @@
     sharing_egg_convertible: 'https://i.mouse.rip/sharing-egg.png',
   };
 
+  const dropRates = {
+    "bbb_egg_convertible": {
+        "location": "Town of Digby",
+        "stage": "",
+        "cheese": "Limelight",
+        "percentage": 2.76
+    },
+    "black_widow_egg_convertible": {
+        "location": "Nerg Plains",
+        "stage": "",
+        "cheese": "Empowered SUPER|brie+",
+        "percentage": 3.03
+    },
+    "burglar_egg_convertible": {
+        "location": "Bazaar",
+        "stage": "",
+        "cheese": "Gilded",
+        "percentage": 13.21
+    },
+    "cherry_egg_convertible": {
+        "location": "Calm Clearing",
+        "stage": "",
+        "cheese": "Cherry",
+        "percentage": 15.46
+    },
+    "cook_egg_convertible": {
+        "location": "S.S. Huntington IV",
+        "stage": "",
+        "cheese": "SUPER|brie+",
+        "percentage": 3.03
+    },
+    "dragon_egg_convertible": {
+        "location": "Dracano",
+        "stage": "",
+        "cheese": "Inferno Havarti",
+        "percentage": 34.84
+    },
+    "hydra_egg_convertible": {
+        "location": "Lagoon",
+        "stage": "",
+        "cheese": "Wicked Gnarly",
+        "percentage": 18.18
+    },
+    "lich_egg_convertible": {
+        "location": "Balack's Cove",
+        "stage": "Medium Tide",
+        "cheese": "Vengeful Vanilla Stilton",
+        "percentage": 57.39
+    },
+    "magic_egg_convertible": {
+        "location": "Town of Gnawnia",
+        "stage": "",
+        "cheese": "SUPER|brie+",
+        "percentage": 15.79
+    },
+    "monster_egg_convertible": {
+        "location": "Laboratory",
+        "stage": "",
+        "cheese": "Magical Rancid Radioactive Blue",
+        "percentage": 43.43
+    },
+    "nibbler_egg_convertible": {
+        "location": "Town of Gnawnia",
+        "stage": "",
+        "cheese": "SUPER|brie+",
+        "percentage": 14.91
+    },
+    "pirate_egg_convertible": {
+        "location": "Harbour",
+        "stage": "No Bounty",
+        "cheese": "SUPER|brie+",
+        "percentage": 26.28
+    },
+    "pygmy_swarm_egg_convertible": {
+        "location": "Jungle of Dread",
+        "stage": "",
+        "cheese": "Vanilla Stilton",
+        "percentage": 92.31
+    },
+    "realm_ripper_egg_convertible": {
+        "location": "Forbidden Grove",
+        "stage": "Closed",
+        "cheese": "Ancient",
+        "percentage": 18.34
+    },
+    "silth_egg_convertible": {
+        "location": "Lagoon",
+        "stage": "",
+        "cheese": "Wicked Gnarly",
+        "percentage": 6.39
+    },
+    "aether_egg_convertible": {
+        "location": "Crystal Library",
+        "stage": "",
+        "cheese": "SUPER|brie+",
+        "percentage": 1.83
+    },
+    "assassin_egg_convertible": {
+        "location": "Dojo",
+        "stage": "",
+        "cheese": "Empowered SUPER|brie+",
+        "percentage": 2.78
+    },
+    "clockwork_egg_convertible": {
+        "location": "Crystal Library",
+        "stage": "",
+        "cheese": "Gouda",
+        "percentage": 8.72
+    },
+    "crown_collector_egg_convertible": {
+        "location": "King's Arms",
+        "stage": "",
+        "cheese": "Brie",
+        "percentage": 20
+    },
+    "desert_nomad_egg_convertible": {
+        "location": "Muridae Market",
+        "stage": "Not Artisan",
+        "cheese": "SUPER|brie+",
+        "percentage": 3.79
+    },
+    "diamond_egg_convertible": {
+        "location": "Tournament Hall",
+        "stage": "",
+        "cheese": "SUPER|brie+",
+        "percentage": 11.36
+    },
+    "eclipse_egg_convertible": {
+        "location": "King's Gauntlet",
+        "stage": "",
+        "cheese": "Gauntlet Tier 8",
+        "percentage": 100
+    },
+    "fog_egg_convertible": {
+        "location": "Mountain",
+        "stage": "",
+        "cheese": "SUPER|brie+",
+        "percentage": 15.68
+    },
+    "real_lich_egg_convertible": {
+        "location": "Acolyte Realm",
+        "stage": "",
+        "cheese": "Runic",
+        "percentage": 5.12
+    },
+    "scavenger_egg_convertible": {
+        "location": "Forbidden Grove",
+        "stage": "Closed",
+        "cheese": "Moon",
+        "percentage": 7.87
+    },
+    "spud_egg_convertible": {
+        "location": "Windmill",
+        "stage": "",
+        "cheese": "Cherry",
+        "percentage": 7.41
+    },
+    "chrono_egg_convertible": {
+        "location": "Acolyte Realm",
+        "stage": "",
+        "cheese": "Runic",
+        "percentage": 1.81
+    },
+    "corrupt_egg_convertible": {
+        "location": "Cursed City",
+        "stage": "Cursed",
+        "cheese": "Graveblossom Camembert",
+        "percentage": 6.34
+    },
+    "cursed_librarian_egg_convertible": {
+        "location": "Cursed City",
+        "stage": "Not Cursed",
+        "cheese": "Graveblossom Camembert",
+        "percentage": 2.97
+    },
+    "deep_egg_convertible": {
+        "location": "Iceberg",
+        "stage": "2000ft",
+        "cheese": "Gouda",
+        "percentage": 100
+    },
+    "drheller_egg_convertible": {
+        "location": "Iceberg",
+        "stage": "Generals",
+        "cheese": "Empowered SUPER|brie+",
+        "percentage": 52.78
+    },
+    "ethereal_librarian_egg_convertible": {
+        "location": "Lost City",
+        "stage": "Cursed",
+        "cheese": "Dewthief Camembert",
+        "percentage": 11.58
+    },
+    "icewing_egg_convertible": {
+        "location": "Iceberg",
+        "stage": "1800ft",
+        "cheese": "Empowered SUPER|brie+",
+        "percentage": 24.55
+    },
+    "quesodillo_egg_convertible": {
+        "location": "Sand Dunes",
+        "stage": "No Stampede",
+        "cheese": "Dewthief Camembert",
+        "percentage": 14.49
+    },
+    "sarcophamouse_egg_convertible": {
+        "location": "Sand Crypts",
+        "stage": "",
+        "cheese": "Graveblossom Camembert",
+        "percentage": 3.38
+    },
+    "thistle_egg_convertible": {
+        "location": "Living Garden",
+        "stage": "Not Pouring",
+        "cheese": "Brie",
+        "percentage": 15.56
+    },
+    "twisted_lilly_egg_convertible": {
+        "location": "Twisted Garden",
+        "stage": "Not Pouring",
+        "cheese": "Duskshade Camembert",
+        "percentage": 13.71
+    },
+    "essence_guardian_egg_convertible": {
+        "location": "Cursed City",
+        "stage": "Not Cursed",
+        "cheese": "Graveblossom Camembert",
+        "percentage": 24.51
+    },
+    "gate_guardian_egg_convertible": {
+        "location": "Acolyte Realm",
+        "stage": "",
+        "cheese": "Rancid Radioactive Blue",
+        "percentage": 6.33
+    },
+    "living_salt_egg_convertible": {
+        "location": "Iceberg",
+        "stage": "1801-2000ft",
+        "cheese": "Gouda",
+        "percentage": 39.3
+    },
+    "mage_weaver_egg_convertible": {
+        "location": "Muridae Market",
+        "stage": "Artisan",
+        "cheese": "Empowered SUPER|brie+",
+        "percentage": 19.61
+    },
+    "magmatic_golem_egg_convertible": {
+        "location": "Gnawnian Express Station",
+        "stage": "3. Daredevil Canyon",
+        "cheese": "SUPER|brie+",
+        "percentage": 5.46
+    },
+    "master_of_the_dojo_egg_convertible": {
+        "location": "Pinnacle Chamber",
+        "stage": "",
+        "cheese": "Rumble",
+        "percentage": 30.8
+    },
+    "mighty_mole_egg_convertible": {
+        "location": "Gnawnia Rift",
+        "stage": "",
+        "cheese": "Magical String",
+        "percentage": 6.05
+    },
+    "mystic_king_egg_convertible": {
+        "location": "Zugzwang's Tower",
+        "stage": "",
+        "cheese": "Checkmate",
+        "percentage": 9.66
+    },
+    "sharpshooter_egg_convertible": {
+        "location": "Gnawnian Express Station",
+        "stage": "2. Raider River - Not Defending",
+        "cheese": "SUPER|brie+",
+        "percentage": 13.19
+    },
+    "technic_king_egg_convertible": {
+        "location": "Zugzwang's Tower",
+        "stage": "",
+        "cheese": "Checkmate",
+        "percentage": 7.08
+    },
+    "wanted_poster_egg_convertible": {
+        "location": "Claw Shot City",
+        "stage": "No poster",
+        "cheese": "SUPER|brie+",
+        "percentage": 14.35
+    },
+    "cherry_sprite_egg_convertible": {
+        "location": "Whisker Woods Rift",
+        "stage": "GGT 0-24",
+        "cheese": "Swiss String",
+        "percentage": 4.96
+    },
+    "gilded_leaf_egg_convertible": {
+        "location": "Whisker Woods Rift",
+        "stage": "GGT 0-24",
+        "cheese": "Magical String",
+        "percentage": 6.46
+    },
+    "grizzled_silth_egg_convertible": {
+        "location": "Whisker Woods Rift",
+        "stage": "GGT 0-24",
+        "cheese": "Swiss String",
+        "percentage": 4.13
+    },
+    "mouse_scale_egg_convertible": {
+        "location": "Sunken City",
+        "stage": "Mermouse Den 2-10km",
+        "cheese": "Gouda",
+        "percentage": 26.06
+    },
+    "naturalist_egg_convertible": {
+        "location": "Whisker Woods Rift",
+        "stage": "GGT 0-24",
+        "cheese": "Magical String",
+        "percentage": 3.23
+    },
+    "null_rift_egg_convertible": {
+        "location": "Burroughs Rift",
+        "stage": "Mist 19-20",
+        "cheese": "Polluted Parmesan",
+        "percentage": 20.54
+    },
+    "rift_fang_egg_convertible": {
+        "location": "Burroughs Rift",
+        "stage": "Mist 1-5",
+        "cheese": "Magical String",
+        "percentage": 25.2
+    },
+    "rift_venom_egg_convertible": {
+        "location": "Whisker Woods Rift",
+        "stage": "CC 50",
+        "cheese": "Lactrodectus Lancashire",
+        "percentage": 100
+    },
+    "tritus_egg_convertible": {
+        "location": "Sunken City",
+        "stage": "Lair of the Ancients 25km+",
+        "cheese": "SUPER|brie+",
+        "percentage": 32.38
+    },
+    "decrepit_tentacle_egg_convertible": {
+        "location": "Zokor",
+        "stage": "Lair - Each 30+",
+        "cheese": "Glowing Gruyere",
+        "percentage": 62.2
+    },
+    "rrs_egg_convertible": {
+        "location": "Zokor",
+        "stage": "Lair - Each 30+",
+        "cheese": "Gouda",
+        "percentage": 14.71
+    },
+    "unstable_zokor_crystal_egg_convertible": {
+        "location": "Zokor",
+        "stage": "Treasure 50+",
+        "cheese": "Glowing Gruyere",
+        "percentage": 45.7
+    },
+    "acolyte_egg_convertible": {
+        "location": "Acolyte Realm",
+        "stage": "",
+        "cheese": "Runic",
+        "percentage": 7.49
+    },
+    "ascended_elder_egg_convertible": {
+        "location": "Furoma Rift",
+        "stage": "Battery 9",
+        "cheese": "Ascended",
+        "percentage": 100
+    },
+    "captain_croissant_egg_convertible": {
+        "location": "Windmill",
+        "stage": "",
+        "cheese": "Grilled",
+        "percentage": 100
+    },
+    "crystal_behemoth_egg_convertible": {
+        "location": "Fungal Cavern",
+        "stage": "",
+        "cheese": "Diamond",
+        "percentage": 68.13
+    },
+    "monster_of_the_meteor_egg_convertible": {
+        "location": "Fort Rox",
+        "stage": "Dawn",
+        "cheese": "Moon",
+        "percentage": 49.05
+    },
+    "mutant_mongrel_egg_convertible": {
+        "location": "Toxic Spill",
+        "stage": "Duke\/Duchess",
+        "cheese": "Rancid Radioactive Blue",
+        "percentage": 13.82
+    },
+    "rift_dojo_master_egg_convertible": {
+        "location": "Furoma Rift",
+        "stage": "Battery 8",
+        "cheese": "Rift Rumble",
+        "percentage": 100
+    },
+    "riptide_egg_convertible": {
+        "location": "Balack's Cove",
+        "stage": "Medium Tide",
+        "cheese": "Vengeful Vanilla Stilton",
+        "percentage": 13.91
+    },
+    "shelder_egg_convertible": {
+        "location": "S.S. Huntington IV",
+        "stage": "",
+        "cheese": "Galleon Gouda",
+        "percentage": 0.66
+    },
+    "tiny_egg_convertible": {
+        "location": "Windmill",
+        "stage": "",
+        "cheese": "SUPER|brie+",
+        "percentage": 13.99
+    },
+    "warmonger_egg_convertible": {
+        "location": "Fiery Warpath",
+        "stage": "Wave 4",
+        "cheese": "Empowered SUPER|brie+",
+        "percentage": 15.46
+    },
+    "abominable_snow_egg_convertible": {
+        "location": "Mountain",
+        "stage": "",
+        "cheese": "Abominable Asiago",
+        "percentage": 100
+    },
+    "absolute_acolyte_egg_convertible": {
+        "location": "Bristle Woods Rift",
+        "stage": "Acolyte",
+        "cheese": "Runic String",
+        "percentage": 3.04
+    },
+    "brown_egg_convertible": {
+        "location": "Windmill",
+        "stage": "",
+        "cheese": "Cheddar",
+        "percentage": 5.66
+    },
+    "chamber_cleaver_egg_convertible": {
+        "location": "Bristle Woods Rift",
+        "stage": "Runic Laboratory",
+        "cheese": "Runic String",
+        "percentage": 25
+    },
+    "ful_mina_egg_convertible": {
+        "location": "Moussu Picchu",
+        "stage": "Wind max",
+        "cheese": "Dragonvine",
+        "percentage": 13.27
+    },
+    "grey_egg_convertible": {
+        "location": "Harbour",
+        "stage": "No Bounty",
+        "cheese": "Brie",
+        "percentage": 5
+    },
+    "mutated_behemoth_egg_convertible": {
+        "location": "Toxic Spill",
+        "stage": "Archduke\/Archduchess",
+        "cheese": "Magical Rancid Radioactive Blue",
+        "percentage": 19.6
+    },
+    "thunderlord_egg_convertible": {
+        "location": "Moussu Picchu",
+        "stage": "Rain medium",
+        "cheese": "Dragonvine",
+        "percentage": 62.68
+    },
+    "white_egg_convertible": {
+        "location": "Town of Gnawnia",
+        "stage": "",
+        "cheese": "Cheddar",
+        "percentage": 6.13
+    },
+    "kalor_ignis_egg_convertible": {
+        "location": "Queso Geyser",
+        "stage": "Epic Eruption",
+        "cheese": "Wildfire Queso",
+        "percentage": 7.94
+    },
+    "tower_elixir_egg_convertible": {
+        "location": "Valour Rift",
+        "stage": "Outside",
+        "cheese": "Magical String",
+        "percentage": 71.79
+    },
+    "tower_secret_egg_convertible": {
+        "location": "Valour Rift",
+        "stage": "Eclipse",
+        "cheese": "Brie String",
+        "percentage": 52.94
+    },
+    "tower_sigil_egg_convertible": {
+        "location": "Valour Rift",
+        "stage": "Eclipse",
+        "cheese": "Gauntlet String",
+        "percentage": 49.36
+    },
+    "tower_siphon_egg_convertible": {
+        "location": "Valour Rift",
+        "stage": "UU Floors 25-31+",
+        "cheese": "Magical String",
+        "percentage": 25.29
+    },
+    "tower_umbra_egg_convertible": {
+        "location": "Valour Rift",
+        "stage": "UU Eclipse",
+        "cheese": "Gauntlet String",
+        "percentage": 98.99
+    },
+    "balack_the_banished_egg_convertible": {
+        "location": "Balack's Cove",
+        "stage": "Medium Tide",
+        "cheese": "Vengeful Vanilla Stilton",
+        "percentage": 12.17
+    },
+    "corky_the_collector_egg_convertible": {
+        "location": "Queso Geyser",
+        "stage": "",
+        "cheese": "Flamin' Queso",
+        "percentage": 13.21
+    },
+    "warden_of_fog_egg_convertible": {
+        "location": "Floating Islands",
+        "stage": "Warden",
+        "cheese": "Empowered SUPER|brie+",
+        "percentage": 26.2
+    },
+    "warden_of_frost_egg_convertible": {
+        "location": "Floating Islands",
+        "stage": "Warden",
+        "cheese": "Empowered Brie",
+        "percentage": 29.47
+    },
+    "warden_of_rain_egg_convertible": {
+        "location": "Floating Islands",
+        "stage": "Warden",
+        "cheese": "Empowered Brie",
+        "percentage": 29.47
+    },
+    "warden_of_wind_egg_convertible": {
+        "location": "Floating Islands",
+        "stage": "Warden",
+        "cheese": "Gouda",
+        "percentage": 31.94
+    },
+    "zurreal_egg_convertible": {
+        "location": "Crystal Library",
+        "stage": "",
+        "cheese": "Empowered SUPER|brie+",
+        "percentage": 6.57
+    },
+    "empyrean_empress_egg_convertible": {
+        "location": "Floating Islands",
+        "stage": "Empress",
+        "cheese": "Empowered SUPER|brie+",
+        "percentage": 99.55
+    },
+    "peggy_egg_convertible": {
+        "location": "Floating Islands",
+        "stage": "Vault Pirates x4",
+        "cheese": "Sky Pirate Swiss",
+        "percentage": 45.14
+    }
+};
+
   // Add the styles
   addStyles(`#overlayPopup.mh-dialog-book-wrapper .jsDialog.top,
   #overlayPopup.mh-dialog-book-wrapper .jsDialog.bottom,
@@ -993,6 +1566,13 @@
     height: 30px;
     filter: drop-shadow(2px 4px 6px #debe6b);
   }
+
+  .drop-rate {
+    margin-left: 0.25em;
+    font-style: italic;
+    font-size: .9em;
+    color: #423726;
+  }
   `);
 
   const getEggs = async () => {
@@ -1017,7 +1597,7 @@
     return getSetting('seh-scrambles', 'scrambles', false);
   };
 
-  const makeAquireSection = (title, content, appendTo = null, type = null) => {
+  const makeAquireSection = (egg, title, content, appendTo = null, type = null) => {
     const wrapper = document.createElement('div');
 
     const aquireListHeader = makeElement('div', 'aquire-list-header', title);
@@ -1041,6 +1621,7 @@
         link.innerHTML = text;
 
         listItem.appendChild(link);
+
       } else if ('location' === type) {
         const locationLink = document.createElement('a');
         locationLink.setAttribute('href', '#');
@@ -1101,23 +1682,35 @@
   const getAquireList = (egg) => {
     const wrapper = document.createElement('div');
     const aquireListWrapper = makeElement('div', 'aqure-list-wrapper');
+    let tipShown = false;
 
-    if (ways[ egg.type ] !== undefined) {
-      let tipShown = false;
-      if (ways[ egg.type ].text !== undefined) {
-        makeAquireSection('', [ways[ egg.type ].text], aquireListWrapper, 'tip');
-        tipShown = true;
+    if (dropRates[ egg.type ] !== undefined) {
+      let location = dropRates[ egg.type ].location;
+      if (dropRates[ egg.type ].stage.length > 0) {
+        location = `${location} (${dropRates[ egg.type ].stage})`;
       }
 
+      makeAquireSection(egg, 'Best Method:', [ `${location} - ${dropRates[egg.type].cheese} - ${dropRates[egg.type].percentage}%`], aquireListWrapper, 'drop-rate');
+    }
+
+    if (ways[ egg.type ] !== undefined) {
+      if (ways[ egg.type ].text !== undefined) {
+        makeAquireSection(egg, '', [ways[ egg.type ].text], aquireListWrapper, 'tip');
+        tipShown = true;
+      }
+    }
+
+    if (ways[ egg.type ] !== undefined) {
       if (Array.isArray(ways[ egg.type ].mice)) {
-        makeAquireSection('Can be dropped from:', ways[ egg.type ].mice, aquireListWrapper, 'mice');
+        makeAquireSection(egg, 'Can be dropped from:', ways[ egg.type ].mice, aquireListWrapper, 'mice');
+        dropRates[ egg.type ] !== undefined
       } else if (! tipShown) {
-        makeAquireSection('', [ways[ egg.type ]], aquireListWrapper, 'tip');
+        makeAquireSection(egg, '', [ways[ egg.type ]], aquireListWrapper, 'tip');
       }
     }
 
     if (environments[ egg.type ] !== undefined && environments[ egg.type ].length > 0) {
-      makeAquireSection('Can be found in:', environments[ egg.type ], aquireListWrapper, 'location');
+      makeAquireSection(egg, 'Can be found in:', environments[ egg.type ], aquireListWrapper, 'location');
     }
 
     wrapper.appendChild(aquireListWrapper);
