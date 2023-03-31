@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.2.6
+// @version      1.2.7
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -158,7 +158,6 @@
     icewing_generals_egg_convertible: { mice: ['Lady Coldsnap', 'Princess Fist', 'Lord Splodington', 'General Drheller'] },
     jod_egg_convertible: { mice: ['Chitinous', 'Fetid Swamp', 'Jurassic', 'Magma Carrier', 'Primal', 'Stonework Warrior'] },
     kalor_ignis_egg_convertible: { mice: ['Kalor\'ignis of the Geyser'] },
-    lich_egg_convertible: { mice: ['Lich'] },
     living_garden_egg_convertible: { mice: ['Barkshell', 'Cursed Thief', 'Ethereal Engineer', 'Serpentine', 'Spiky Devil', 'Thistle'] },
     living_salt_egg_convertible: { mice: ['Living Salt'] },
     m400_egg_convertible: { mice: ['M400'] },
@@ -191,7 +190,7 @@
     queso_pump_egg_convertible: { mice: ['Tiny Saboteur', 'Pump Raider', 'Croquet Crusher', 'Queso Extractor'] },
     queso_spice_egg_convertible: { mice: ['Spice Farmer', 'Granny Spice', 'Spice Sovereign', 'Spice Finder', 'Spice Raider', 'Spice Reaper', 'Inferna, The Engulfed'] },
     quesodillo_egg_convertible: { mice: ['Quesodillo'] },
-    real_lich_egg_convertible: { mice: ['Lich'] },
+    real_lich_egg_convertible: { mice: ['Derr Lich', 'Nerg Lich', 'Elub Lich'] },
     realm_ripper_egg_convertible: { mice: ['Realm Ripper'] },
     relic_hunter_egg_convertible: { mice: ['Relic Hunter'] },
     richest_egg_convertible: { mice: ['Richard the Rich', 'Fortuitous Fool'] },
@@ -1690,7 +1689,7 @@
         location = `${location} (${dropRates[ egg.type ].stage})`;
       }
 
-      makeAquireSection(egg, 'Best Method:', [ `${location} - ${dropRates[egg.type].cheese} - ${dropRates[egg.type].percentage}%`], aquireListWrapper, 'drop-rate');
+      // makeAquireSection(egg, 'Best Method:', [ `${location} - ${dropRates[egg.type].cheese} - ${dropRates[egg.type].percentage}%`], aquireListWrapper, 'drop-rate');
     }
 
     if (ways[ egg.type ] !== undefined) {
