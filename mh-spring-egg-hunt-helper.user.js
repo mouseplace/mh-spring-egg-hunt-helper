@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.4.1
+// @version      1.4.2
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -1775,7 +1775,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 100;
+      z-index: 10;
     }
 
     #scrambles img {
