@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.4.0
+// @version      1.4.1
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -1854,7 +1854,7 @@
       item.classList.toggle('scrambles-flip');
     });
 
-    icon.addEventListener('mousewheel', (e) => {
+    icon.addEventListener('wheel', (e) => {
       e.preventDefault();
       const scale = e.deltaY > 0 ? 0.9 : 1.1;
       const transform = icon.style.transform;
