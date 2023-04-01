@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.2.8
+// @version      1.4.0
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -8,7 +8,7 @@
 // @match        https://www.mousehuntgame.com/*
 // @icon         https://i.mouse.rip/mouse.png
 // @grant        none
-// @require      https://cdn.jsdelivr.net/npm/mousehunt-utils@1.4.0/mousehunt-utils.js
+// @require      https://cdn.jsdelivr.net/npm/mousehunt-utils@1.4.1/mousehunt-utils.js
 // @run-at       document-end
 // ==/UserScript==
 
@@ -730,8 +730,10 @@
   }
 
   .right-description {
+    display: -ms-grid;
     display: grid;
     align-items: center;
+    -ms-grid-columns: 1fr 1.25em 4fr;
     grid-template-columns: 1fr 4fr;
     grid-gap: 1.25em;
     max-width: 300px;
@@ -760,10 +762,9 @@
     height: 25px;
     background-repeat: no-repeat;
     background-image: url(https://www.mousehuntgame.com/images/ui/events/winter_hunt_2013/checkmark.png?asset_cache_version=2);
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
     background-size: contain;
-    filter: drop-shadow(5px -1px 5px #19e718);
+    -webkit-filter: drop-shadow(5px -1px 5px #19e718);
+            filter: drop-shadow(5px -1px 5px #19e718);
   }
 
   .right-short-text p {
@@ -785,8 +786,6 @@
     position: relative;
     margin-top: 20px;
     background: #f7e3a9;
-    -webkit-box-shadow: 0 0 5px #e8d7a4 inset;
-    -moz-box-shadow: 0 0 5px #e8d7a4 inset;
     box-shadow: 0 0 5px #e8d7a4 inset;
     padding: 10px;
     border-radius: 5px;
@@ -827,6 +826,22 @@
     box-shadow: inset 1px 1px 1px 0px #daa756;
   }
 
+  .egg-search-input::-webkit-input-placeholder {
+    color: #b58e51;
+  }
+
+  .egg-search-input::-moz-placeholder {
+    color: #b58e51;
+  }
+
+  .egg-search-input:-ms-input-placeholder {
+    color: #b58e51;
+  }
+
+  .egg-search-input::-ms-input-placeholder {
+    color: #b58e51;
+  }
+
   .egg-search-input::placeholder {
     color: #b58e51;
   }
@@ -835,13 +850,15 @@
     width: 30px;
     height: 30px;
     mix-blend-mode: luminosity;
-    filter: opacity(0.8);
+    -webkit-filter: opacity(0.8);
+            filter: opacity(0.8);
   }
 
   .egg-tool-image:hover,
   .egg-tool-image:focus {
     mix-blend-mode: multiply;
-    filter: opacity(1);
+    -webkit-filter: opacity(1);
+            filter: opacity(1);
   }
 
   .category-eggs {
@@ -944,7 +961,8 @@
   }
 
   .category-egg-wrapper:hover {
-      transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+              transform: scale(1.1);
   }
 
   .collected-text {
@@ -976,19 +994,23 @@
     top: 5px;
     left: -27px;
     transition: .125s;
-    filter: drop-shadow(1px 1px 1px #debb6c);
+    -webkit-filter: drop-shadow(1px 1px 1px #debb6c);
+            filter: drop-shadow(1px 1px 1px #debb6c);
     z-index: 1;
   }
 
   #mh-custom-icon-egg:hover {
-    transform: scale(1.2);
-    filter: drop-shadow(1px 1px 6px #debb6c);
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-filter: drop-shadow(1px 1px 6px #debb6c);
+            filter: drop-shadow(1px 1px 6px #debb6c);
   }
 
   #mh-custom-icon-egg img {
     width: 30px;
     height: 30px;
-    filter: drop-shadow(2px 4px 6px #debe6b);
+    -webkit-filter: drop-shadow(2px 4px 6px #debe6b);
+            filter: drop-shadow(2px 4px 6px #debe6b);
   }
 
   .drop-rate {
@@ -997,7 +1019,36 @@
     font-size: .9em;
     color: #423726;
   }
-  `);
+
+  #mh-mouseplace-setting-seh-uem-mode .defaultSettingText,
+  #mh-mouseplace-setting-seh-scrambles .defaultSettingText,
+  #mh-mouseplace-setting-seh-scrambles-buddy .defaultSettingText {
+    margin-top: 0.65em;
+  }
+
+  .seh-image-saved-hidden:after {
+    content: "Saved!";
+    position: absolute;
+    width: 80px;
+    height: 15px;
+    color: #8e784f;
+    text-align: center;
+    margin-top: 90px;
+    opacity: 0;
+    transition: .125s linear;
+    background-repeat: no-repeat;
+    background-image: url(https://www.mousehuntgame.com/images/ui/events/winter_hunt_2013/checkmark.png?asset_cache_version=2);
+    background-size: contain;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .seh-image-saved:after {
+    opacity: 1;
+    transition: .125s linear;
+  }`);
 
   const getEggs = async () => {
     const response = await doRequest('managers/ajax/events/spring_hunt.php', { action: 'get_eggs' });
@@ -1163,11 +1214,26 @@
 
     const descriptionWrapper = makeElement('div', 'right-content');
     const description = makeElement('div', 'right-description');
+    description.classList.add('seh-image-saved-hidden');
 
     const descriptionImage = document.createElement('img');
     descriptionImage.src = eggImages[ egg.type ] || egg.thumb;
     descriptionImage.alt = egg.name;
     descriptionImage.classList.add('right-thumb');
+
+    descriptionImage.addEventListener('click', (e) => {
+      if (! e.shiftKey) {
+        return;
+      }
+
+      const image = e.target;
+      changeEggImage(image.src);
+
+      image.parentElement.classList.add('seh-image-saved');
+      setTimeout(() => {
+        image.parentElement.classList.remove('seh-image-saved');
+      }, 2000);
+    });
 
     description.appendChild(descriptionImage);
 
@@ -1636,12 +1702,27 @@
 
   /**
    * Change the egg icon to a random egg image.
+   *
+   * @param {string} url The URL of the egg image.
    */
-  const changeEggImage = () => {
+  const changeEggImage = (url = false) => {
     const icon = document.querySelector('#mh-egg-icon');
     if (icon) {
-      icon.src = getRandomEggImage();
+      if (url) {
+        icon.src = url;
+      } else {
+        icon.src = getRandomEggImage();
+      }
     }
+
+    // Save the setting after 1 second, but reset the timer if the user clicks again.
+    if (saveEggImage) {
+      clearTimeout(saveEggImage);
+    }
+
+    saveEggImage = setTimeout(() => {
+      saveSetting('seh-egg-image', icon.src);
+    }, 1000);
   };
 
   /**
@@ -1669,7 +1750,10 @@
     if (isScrambles()) {
       icon.src = 'https://i.mouse.rip/scrambles.png';
     } else {
-      icon.src = getRandomEggImage();
+      const savedImage = getSetting('seh-egg-image', getRandomEggImage());
+      if (savedImage) {
+        icon.src = savedImage;
+      }
     }
 
     icon.alt = 'Spring Egg Hunt Helper';
@@ -1679,11 +1763,137 @@
     menu.appendChild(item);
   };
 
+  /**
+   * Bawk!
+   */
+  const addDraggableScrambles = () => {
+    if (! getSetting('seh-scrambles-buddy', false)) {
+      return;
+    }
+
+    addStyles(`#scrambles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    #scrambles img {
+      width: 50px;
+      height: 50px;
+      -webkit-filter: drop-shadow(1px 4px 2px #656565);
+              filter: drop-shadow(1px 4px 2px #656565);
+    }
+
+    @-webkit-keyframes scrambles-spin {
+      from {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+      }
+
+      to {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    @keyframes scrambles-spin {
+      from {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+      }
+
+      to {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    #scrambles.scrambles-spin {
+      -webkit-animation-name: scrambles-spin;
+              animation-name: scrambles-spin;
+      -webkit-animation-duration: .5s;
+              animation-duration: .5s;
+      -webkit-animation-iteration-count: 1;
+              animation-iteration-count: 1;
+      -webkit-animation-timing-function: linear;
+              animation-timing-function: linear;
+    }
+
+    #scrambles.scrambles-flip {
+      -webkit-transform: scaleX(-1);
+              transform: scaleX(-1);
+    }`);
+
+    const body = document.querySelector('body');
+
+    const item = document.createElement('div');
+    item.id = 'scrambles';
+    const icon = document.createElement('img');
+    icon.id = 'scrambes-icon';
+    icon.src = 'https://i.mouse.rip/scrambles.png';
+
+    icon.addEventListener('dblclick', (e) => {
+      if (e.shiftKey) {
+        // randomize the position
+        const x = Math.floor(Math.random() * (window.innerWidth - 50));
+        const y = Math.floor(Math.random() * (window.innerHeight - 50));
+
+        item.style.left = `${x}px`;
+        item.style.top = `${y}px`;
+      } else {
+        item.classList.add('scrambles-spin');
+        setTimeout(() => {
+          item.classList.remove('scrambles-spin');
+        }, 550);
+      }
+    });
+
+    icon.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      item.classList.toggle('scrambles-flip');
+    });
+
+    icon.addEventListener('mousewheel', (e) => {
+      e.preventDefault();
+      const scale = e.deltaY > 0 ? 0.9 : 1.1;
+      const transform = icon.style.transform;
+      const scaleValue = transform ? transform.match(/scale\((\d+\.?\d*)\)/)[ 1 ] : 1;
+      let newScale = scaleValue * scale;
+
+      // don't let it get too big or too small
+      if (newScale < 0.3) {
+        newScale = 0.3;
+      }
+
+      if (newScale > 40) {
+        newScale = 40;
+      }
+
+      icon.style.transform = `scale(${newScale})`;
+
+      // save the new scale
+      localStorage.setItem('mh-scrambles-scale', newScale);
+    });
+
+    const scale = localStorage.getItem('mh-scrambles-scale');
+    if (scale) {
+      icon.style.transform = `scale(${scale})`;
+    }
+
+    item.appendChild(icon);
+    body.appendChild(item);
+
+    makeElementDraggable('#scrambles', '#scrambes-icon');
+  };
+
   let popup = null;
   let environments = [];
   const eggsData = [];
   let isUEM = false;
+  let saveEggImage = false;
 
+  addDraggableScrambles();
   addEggIcon();
 
   addSubmenuItem({
@@ -1704,17 +1914,24 @@
   }
 
   addSetting(
-    'SEH Helper: Ultimate Egg Master Mode',
+    '🥚️ SEH Helper: Ultimate Egg Master Mode',
     'seh-uem-mode',
     false,
     'Track collected/uncollected by whether or not they\'re in your inventory.'
   );
 
   addSetting(
-    'SEH Helper: Scrambles',
+    '🥚️ SEH Helper: Scrambles instead of a random egg',
     'seh-scrambles',
     false,
     'Replace the random egg icon with Scrambles.'
+  );
+
+  addSetting(
+    '🥚️ SEH Helper: Scrambles Buddy',
+    'seh-scrambles-buddy',
+    false,
+    'Gives you a draggable Scrambles buddy to put anywhere on the screen. <p>Double-click to spin him! Right-click to flip! Scroll to resize! Shift + double-click to randomize!'
   );
 
   createLarryWelcomePopup();
