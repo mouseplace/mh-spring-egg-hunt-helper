@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.4.5
+// @version      1.4.6
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -8,7 +8,7 @@
 // @match        https://www.mousehuntgame.com/*
 // @icon         https://i.mouse.rip/mouse.png
 // @grant        none
-// @require      https://cdn.jsdelivr.net/npm/mousehunt-utils@1.5.2/mousehunt-utils.js
+// @require      https://cdn.jsdelivr.net/npm/mousehunt-utils@1.5.3/mousehunt-utils.js
 // @run-at       document-end
 // ==/UserScript==
 
