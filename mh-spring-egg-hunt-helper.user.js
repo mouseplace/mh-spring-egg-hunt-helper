@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.4.3
+// @version      1.4.5
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -8,7 +8,7 @@
 // @match        https://www.mousehuntgame.com/*
 // @icon         https://i.mouse.rip/mouse.png
 // @grant        none
-// @require      https://cdn.jsdelivr.net/npm/mousehunt-utils@1.4.1/mousehunt-utils.js
+// @require      https://cdn.jsdelivr.net/npm/mousehunt-utils@1.5.2/mousehunt-utils.js
 // @run-at       document-end
 // ==/UserScript==
 
@@ -505,7 +505,7 @@
     background: none;
   }
 
-  #overlayPopup.mh-dialog-book-wrapper #jsDialogClose:hover {
+  #overlayPopup.mh-dialog-book-wrapper #jsDialogClose:hover, #overlayPopup.mh-dialog-book-wrapper #jsDialogClose:focus {
     background-position-y: 50%;
   }
 
@@ -514,103 +514,103 @@
   }
 
   #overlayPopup.mh-dialog-book-wrapper {
-    margin: 0 auto;
-    padding: 0;
-    width: 744px;
     position: relative;
+    width: 744px;
+    padding: 0;
+    margin: 0 auto;
     margin-top: -150px;
   }
 
   #overlayPopup.mh-dialog-book-wrapper .jsDialog.top,
   #overlayPopup.mh-dialog-book-wrapper .jsDialog.bottom {
-    content: '';
     position: absolute;
-    left: 1px;
     top: 105px;
-    background: url(https://www.mousehuntgame.com/images/ui/hud/folklore_forest_region/dialog/top_left.png?asset_cache_version=2);
+    left: 1px;
+    display: block;
     width: 125px;
     height: 105px;
-    display: block;
+    content: '';
+    background: url(https://www.mousehuntgame.com/images/ui/hud/folklore_forest_region/dialog/top_left.png?asset_cache_version=2);
   }
 
-  #overlayPopup.mh-dialog-book-wrapper .jsDialog.bottom:after {
-    content: '';
+  #overlayPopup.mh-dialog-book-wrapper .jsDialog.bottom::after {
     position: absolute;
-    right: -621px;
     top: 1px;
-    background: url(https://www.mousehuntgame.com/images/ui/hud/folklore_forest_region/dialog/top_right.png?asset_cache_version=2);
+    right: -621px;
+    z-index: 1;
     width: 138px;
     height: 106px;
-    z-index: 1;
+    content: '';
+    background: url(https://www.mousehuntgame.com/images/ui/hud/folklore_forest_region/dialog/top_right.png?asset_cache_version=2);
   }
 
   #overlayPopup.mh-dialog-book-wrapper #jsDialogClose {
-    z-index: 1;
-    right: 16px;
     top: 118px;
+    right: 16px;
+    z-index: 1;
     width: 32px;
     height: 32px;
     background-image: url(https://www.mousehuntgame.com/images/ui/hud/folklore_forest_region/dialog/close_button.png?asset_cache_version=2) !important;
     background-position-y: 100%;
   }
 
-  #overlayPopup.mh-dialog-book-wrapper .jsDialog.bottom:before {
-    content: '';
+  #overlayPopup.mh-dialog-book-wrapper .jsDialog.bottom::before {
     position: absolute;
-    left: -8px;
     bottom: -566px;
-    background: url(https://www.mousehuntgame.com/images/ui/hud/folklore_forest_region/dialog/bottom_left.png?asset_cache_version=2);
+    left: -8px;
     width: 55px;
     height: 54px;
+    content: '';
+    background: url(https://www.mousehuntgame.com/images/ui/hud/folklore_forest_region/dialog/bottom_left.png?asset_cache_version=2);
   }
 
   .custom-submenu-item .icon {
-    left: 3px;
     top: 3px;
-    height: 23px;
+    left: 3px;
     width: 23px;
+    height: 23px;
   }
 
   .book-wrapper {
-    background: url(https://i.mouse.rip/book-wrapper.png) 50% 0 no-repeat;
     width: 744px;
     height: 822px;
+    background: url(https://i.mouse.rip/book-wrapper.png) 50% 0 no-repeat;
   }
 
   .right-header {
-    text-align: center;
-    padding: 10px 20px 0 14px;
-    margin-left: 0;
-    height: 75px;
     box-sizing: border-box;
-    background: url(https://i.mouse.rip/book-header.png) 0 0 no-repeat;
-    box-shadow: 0px 5px 4px -5px #d2a155;
-    padding-bottom: 7px;
     width: 326px;
+    height: 75px;
+    padding: 10px 20px 0 14px;
+    padding-bottom: 7px;
     margin-bottom: 10px;
+    margin-left: 0;
+    text-align: center;
+    background: url(https://i.mouse.rip/book-header.png) 0 0 no-repeat;
+    box-shadow: 0 5px 4px -5px #d2a155;
   }
 
   .right-header-text {
-    font-weight: 700;
-    font-size: 12px;
     max-width: 180px;
     margin: 0 auto;
+    font-size: 12px;
+    font-weight: 700;
   }
 
   .right-subheader {
     display: flex;
-    font-style: italic;
-    font-size: 10px;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 0.75em;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 0.75em;
+    font-size: 10px;
+    font-style: italic;
   }
 
   .right-content {
+    height: 429px;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 429px;
   }
 
   .right-thumb {
@@ -619,17 +619,17 @@
   }
 
   .right-meta {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    position: relative;
     padding: 15px;
   }
 
   .egg-wrapper {
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: space-evenly;
     padding: 5px;
   }
 
@@ -638,15 +638,15 @@
   }
 
   .eggs-wrapper .egg-wrapper-unfound img {
-    opacity: .5;
     mix-blend-mode: luminosity;
+    opacity: .5;
   }
 
   .egg-wrapper-image img {
-    vertical-align: middle;
     width: 40px;
     height: 40px;
     margin-right: 5px;
+    vertical-align: middle;
   }
 
   .egg-name {
@@ -655,11 +655,11 @@
 
   .egg-wrapper:hover .find-egg,
   .egg-wrapper:focus .find-egg {
-    background: none;
+    display: inline-block;
+    padding: 5px 0;
     color: #916728;
     text-decoration: none;
-    padding: 5px 0;
-    display: inline-block;
+    background: none;
   }
 
   .egg-wrapper:hover,
@@ -670,25 +670,25 @@
     box-shadow: inset 1px 1px 3px 1px #f7e3a9;
   }
 
-  .find-egg:hover {
-    background-image: linear-gradient(to bottom, #d1fdff, #658c99);
-    background-color: #d1fdff;
+  .find-egg:hover, .find-egg:focus {
     text-decoration: none;
+    background-color: #d1fdff;
+    background-image: linear-gradient(to bottom, #d1fdff, #658c99);
   }
 
   .book-right-side,
   .book-welcome-categories {
     position: absolute;
-    left: 385px;
     top: 155px;
+    left: 385px;
     width: 335px;
   }
 
   .eggs-wrapper,
   .categories-wrapper {
     position: absolute;
-    left: 40px;
     top: 200px;
+    left: 40px;
     width: 315px;
     height: 480px;
     overflow: auto;
@@ -700,8 +700,8 @@
   .categories-wrapper {
     top: 95px;
     left: 8px;
-    height: 430px;
     width: 320px;
+    height: 430px;
   }
 
   .eggs-wrapper,
@@ -725,18 +725,17 @@
   .categories-wrapper::-webkit-scrollbar-thumb,
   .right-content::-webkit-scrollbar-thumb {
     background-color: #e1c07f;
-    border-radius: 5px;
     border: 3px solid transparent;
+    border-radius: 5px;
   }
 
   .right-description {
-    display: -ms-grid;
     display: grid;
-    align-items: center;
-    -ms-grid-columns: 1fr 1.25em 4fr;
     grid-template-columns: 1fr 4fr;
     grid-gap: 1.25em;
+    align-items: center;
     max-width: 300px;
+    -ms-grid-columns: 1fr 1.25em 4fr;
   }
 
   .book-right-side h2,
@@ -749,22 +748,17 @@
     color: #2c672c;
   }
 
-  .category-eggs {
-    position: relative;
-  }
-
-  .egg-wrapper-found:after {
-    content: '';
+  .egg-wrapper-found::after {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 25px;
     height: 25px;
-    background-repeat: no-repeat;
+    content: '';
     background-image: url(https://www.mousehuntgame.com/images/ui/events/winter_hunt_2013/checkmark.png?asset_cache_version=2);
+    filter: drop-shadow(5px -1px 5px #19e718);
+    background-repeat: no-repeat;
     background-size: contain;
-    -webkit-filter: drop-shadow(5px -1px 5px #19e718);
-            filter: drop-shadow(5px -1px 5px #19e718);
   }
 
   .right-short-text p {
@@ -784,23 +778,23 @@
 
   .aqure-list-wrapper {
     position: relative;
+    padding: 10px;
     margin-top: 20px;
     background: #f7e3a9;
-    box-shadow: 0 0 5px #e8d7a4 inset;
-    padding: 10px;
     border-radius: 5px;
+    box-shadow: 0 0 5px #e8d7a4 inset;
   }
 
   .aquire-list-header {
-    font-style: italic;
     font-size: 12px;
+    font-style: italic;
     color: #916728;
   }
 
   .aquire-text {
     padding: 10px;
-    line-height: 21px;
     font-size: 13px;
+    line-height: 21px;
   }
 
   .left-header {
@@ -810,35 +804,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0px 5px 4px -5px #d2a155;
-    padding-bottom: 1em;
     width: 305px;
+    padding-bottom: 1em;
     border: none;
+    box-shadow: 0 5px 4px -5px #d2a155;
   }
 
   .egg-search-input {
-    background-color: #f2dca4;
-    border: none;
     padding: 5px;
     font-size: 12px;
     color: #674e29;
+    background-color: #f2dca4;
+    border: none;
     border-radius: 6px;
-    box-shadow: inset 1px 1px 1px 0px #daa756;
+    box-shadow: inset 1px 1px 1px 0 #daa756;
   }
 
-  .egg-search-input::-webkit-input-placeholder {
-    color: #b58e51;
-  }
-
-  .egg-search-input::-moz-placeholder {
-    color: #b58e51;
-  }
-
-  .egg-search-input:-ms-input-placeholder {
-    color: #b58e51;
-  }
-
-  .egg-search-input::-ms-input-placeholder {
+  .egginput::placeholder {
     color: #b58e51;
   }
 
@@ -849,23 +831,22 @@
   .egg-tool-image {
     width: 30px;
     height: 30px;
+    filter: opacity(0.8);
     mix-blend-mode: luminosity;
-    -webkit-filter: opacity(0.8);
-            filter: opacity(0.8);
   }
 
   .egg-tool-image:hover,
   .egg-tool-image:focus {
+    filter: opacity(1);
     mix-blend-mode: multiply;
-    -webkit-filter: opacity(1);
-            filter: opacity(1);
   }
 
   .category-eggs {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 
   img.category-egg-image {
@@ -874,17 +855,17 @@
   }
 
   .category-title {
-    text-align: center;
     font-size: 1.75em;
     color: #996f2e;
+    text-align: center;
   }
 
   .category-subtitle {
+    padding: 1em;
     font-size: 10px;
     font-style: italic;
     line-height: 15px;
     text-align: center;
-    padding: 1em;
   }
 
   .category-wrapper {
@@ -898,18 +879,18 @@
 
   .egg-close {
     position: absolute;
-    left: 288px;
     bottom: 50px;
+    left: 288px;
     width: 168px;
     height: 63px;
     font-size: 17px;
+    font-weight: 700;
     line-height: 51px;
+    color: #d7eecb;
+    text-align: center;
+    text-shadow: 1px 1px 2px #1a2502;
     background-image: url(https://www.mousehuntgame.com/images/ui/hud/folklore_forest_region/dialog/continue_button_frame.png?asset_cache_version=2);
     background-position: 0 100%;
-    text-align: center;
-    font-weight: 700;
-    color: #d7eecb;
-    text-shadow: 1px 1px 2px #1a2502;
   }
 
   .egg-close:hover,
@@ -934,8 +915,8 @@
   .egg-back-button:hover,
   .egg-back-button:focus,
   .egg-back-button:active {
-    text-decoration: none;
     color: #7b581f;
+    text-decoration: none;
   }
 
   .book-welcome-categories-hidden,
@@ -951,25 +932,30 @@
     opacity: .2;
   }
 
-  .category-egg-wrapper.egg-wrapper-unfound:hover {
-    opacity: 1;
+  .category-egg-wrapper.egg-wrapper-unfound:hover, .category-egg-wrapper.egg-wrapper-unfound:focus {
     mix-blend-mode: initial;
+    opacity: 1;
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+  .category-egg-wrapper {
+    transition: none;
+  }
   }
 
   .category-egg-wrapper {
     transition: .125s;
   }
 
-  .category-egg-wrapper:hover {
-      -webkit-transform: scale(1.1);
-              transform: scale(1.1);
+  .category-egg-wrapper:hover, .category-egg-wrapper:focus {
+    transform: scale(1.1);
   }
 
   .collected-text {
     margin-top: 1.75em;
-    text-align: center;
     font-size: 10px;
     color: #957f58;
+    text-align: center;
     opacity: .75;
   }
 
@@ -978,45 +964,52 @@
   }
 
   .no-eggs-found {
-    color: #cdab6f;
-    text-align: center;
     display: inline-block;
     width: 100%;
     margin-top: 2em;
+    color: #cdab6f;
+    text-align: center;
   }
 
   .no-eggs-found-hidden {
     display: none;
   }
 
+  @media screen and (prefers-reduced-motion: reduce) {
   #mh-custom-icon-egg {
     position: absolute;
     top: 5px;
     left: -27px;
-    transition: .125s;
-    -webkit-filter: drop-shadow(1px 1px 1px #debb6c);
-            filter: drop-shadow(1px 1px 1px #debb6c);
     z-index: 1;
+    filter: drop-shadow(1px 1px 1px #debb6c);
+    transition: none;
+  }
   }
 
-  #mh-custom-icon-egg:hover {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-    -webkit-filter: drop-shadow(1px 1px 6px #debb6c);
-            filter: drop-shadow(1px 1px 6px #debb6c);
+  #mh-custom-icon-egg {
+    position: absolute;
+    top: 5px;
+    left: -27px;
+    z-index: 1;
+    filter: drop-shadow(1px 1px 1px #debb6c);
+    transition: .125s;
+  }
+
+  #mh-custom-icon-egg:hover, #mh-custom-icon-egg:focus {
+    filter: drop-shadow(1px 1px 6px #debb6c);
+    transform: scale(1.2);
   }
 
   #mh-custom-icon-egg img {
     width: 30px;
     height: 30px;
-    -webkit-filter: drop-shadow(2px 4px 6px #debe6b);
-            filter: drop-shadow(2px 4px 6px #debe6b);
+    filter: drop-shadow(2px 4px 6px #debe6b);
   }
 
   .drop-rate {
     margin-left: 0.25em;
-    font-style: italic;
     font-size: .9em;
+    font-style: italic;
     color: #423726;
   }
 
@@ -1026,29 +1019,58 @@
     margin-top: 0.65em;
   }
 
-  .seh-image-saved-hidden:after {
-    content: "Saved!";
+  @media screen and (prefers-reduced-motion: reduce) {
+  .seh-image-saved-hidden::after {
     position: absolute;
-    width: 80px;
-    height: 15px;
-    color: #8e784f;
-    text-align: center;
-    margin-top: 90px;
-    opacity: 0;
-    transition: .125s linear;
-    background-repeat: no-repeat;
-    background-image: url(https://www.mousehuntgame.com/images/ui/events/winter_hunt_2013/checkmark.png?asset_cache_version=2);
-    background-size: contain;
-    margin-left: 10px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    width: 80px;
+    height: 15px;
+    margin-top: 90px;
+    margin-left: 10px;
+    color: #8e784f;
+    text-align: center;
+    content: "Saved!";
+    background-image: url(https://www.mousehuntgame.com/images/ui/events/winter_hunt_2013/checkmark.png?asset_cache_version=2);
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+    transition: none;
+  }
   }
 
-  .seh-image-saved:after {
+  .seh-image-saved-hidden::after {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80px;
+    height: 15px;
+    margin-top: 90px;
+    margin-left: 10px;
+    color: #8e784f;
+    text-align: center;
+    content: "Saved!";
+    background-image: url(https://www.mousehuntgame.com/images/ui/events/winter_hunt_2013/checkmark.png?asset_cache_version=2);
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+    transition: .125s linear;
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+  .seh-image-saved::after {
+    opacity: 1;
+    transition: none;
+  }
+  }
+
+  .seh-image-saved::after {
     opacity: 1;
     transition: .125s linear;
-  }`);
+  }
+  `);
 
   const getEggs = async () => {
     const response = await doRequest('managers/ajax/events/spring_hunt.php', { action: 'get_eggs' });
@@ -1645,7 +1667,7 @@
     addStyles('#overlayPopup.egg-larry-popup .jsDialogContainer { background-image: url(https://i.mouse.rip/larry-welcome.png);}');
 
     const message = {
-      content: { body: '<div class="custom-larry-popup"><span class="text">Thanks for installing the SEH Helper! <p>You can find it under the Camp menu.</span> <a href="#" id="spring-egg-hunt-helper" class="action jsDialogClose">Continue</a></div>' },
+      content: { body: '<div class="custom-larry-popup"><span class="text">Thanks for installing the SEH Helper! <p>You can find it under the Camp menu and can change the settings in your Preferences.</span> <a href="#" id="spring-egg-hunt-helper" class="action jsDialogClose">Continue</a></div>' },
       css_class: 'larryOffice egg-larry-popup',
       show_overlay: true,
       is_modal: true
@@ -1781,49 +1803,63 @@
     #scrambles img {
       width: 50px;
       height: 50px;
-      -webkit-filter: drop-shadow(1px 4px 2px #656565);
-              filter: drop-shadow(1px 4px 2px #656565);
+      filter: drop-shadow(1px 4px 2px #656565);
+      filter: drop-shadow(1px 4px 2px #656565);
     }
 
-    @-webkit-keyframes scrambles-spin {
+    @keyframes scrambles-spin {
       from {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
+        transform: rotate(0deg);
+        transform: rotate(0deg);
       }
 
       to {
-        -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
+        transform: rotate(360deg);
+        transform: rotate(360deg);
       }
     }
 
     @keyframes scrambles-spin {
       from {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
+        transform: rotate(0deg);
+        transform: rotate(0deg);
       }
 
       to {
-        -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
+        transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      #scrambles.scrambles-spin {
+        animation-name: scrambles-spin;
+        animation: none;
+        animation-duration: .5s;
+        animation-duration: .5s;
+        animation-timing-function: linear;
+        animation-timing-function: linear;
+        animation-iteration-count: 1;
+        animation-iteration-count: 1;
       }
     }
 
     #scrambles.scrambles-spin {
-      -webkit-animation-name: scrambles-spin;
-              animation-name: scrambles-spin;
-      -webkit-animation-duration: .5s;
-              animation-duration: .5s;
-      -webkit-animation-iteration-count: 1;
-              animation-iteration-count: 1;
-      -webkit-animation-timing-function: linear;
-              animation-timing-function: linear;
+      animation-name: scrambles-spin;
+      animation-name: scrambles-spin;
+      animation-duration: .5s;
+      animation-duration: .5s;
+      animation-timing-function: linear;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+      animation-iteration-count: 1;
     }
 
     #scrambles.scrambles-flip {
-      -webkit-transform: scaleX(-1);
-              transform: scaleX(-1);
-    }`);
+      transform: scaleX(-1);
+      transform: scaleX(-1);
+    }
+    `);
 
     const body = document.querySelector('body');
 
@@ -1913,25 +1949,38 @@
     });
   }
 
+  const settingSection = {
+    id: 'seh-settings',
+    name: '🥚️ SEH Helper Settings',
+  };
+
+  const tab = addSettingsTab();
+
   addSetting(
-    '🥚️ SEH Helper: Ultimate Egg Master Mode',
+    'Ultimate Egg Master Mode',
     'seh-uem-mode',
     false,
-    'Track collected/uncollected by whether or not they\'re in your inventory.'
+    'Track collected/uncollected by whether or not they\'re in your inventory.',
+    settingSection,
+    tab
   );
 
   addSetting(
-    '🥚️ SEH Helper: Scrambles instead of a random egg',
+    'Scrambles instead of a random egg',
     'seh-scrambles',
     false,
-    'Replace the random egg icon with Scrambles.'
+    'Replace the random egg icon with Scrambles.',
+    settingSection,
+    tab
   );
 
   addSetting(
-    '🥚️ SEH Helper: Scrambles Buddy',
+    'Scrambles Buddy',
     'seh-scrambles-buddy',
     false,
-    'Gives you a draggable Scrambles buddy to put anywhere on the screen. <p>Double-click to spin him! Right-click to flip! Scroll to resize! Shift + double-click to randomize!'
+    'Gives you a draggable Scrambles buddy to put anywhere on the screen. <p>Double-click to spin him! Right-click to flip! Scroll to resize! Shift + double-click to randomize!',
+    settingSection,
+    tab
   );
 
   createLarryWelcomePopup();
