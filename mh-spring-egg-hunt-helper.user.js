@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.4.7
+// @version      1.5.0
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -583,7 +583,6 @@
     height: 75px;
     padding: 10px 20px 0 14px;
     padding-bottom: 7px;
-    margin-bottom: 10px;
     margin-left: 0;
     text-align: center;
     background: url(https://i.mouse.rip/book-header.png) 0 0 no-repeat;
@@ -611,6 +610,7 @@
     height: 429px;
     overflow-x: hidden;
     overflow-y: auto;
+    padding-top: 10px;
   }
 
   .right-thumb {
@@ -698,10 +698,11 @@
   }
 
   .categories-wrapper {
-    top: 95px;
-    left: 8px;
-    width: 320px;
-    height: 430px;
+    top: 80px;
+    left: 5px;
+    width: 325px;
+    height: 429px;
+    padding-top: 5px;
   }
 
   .eggs-wrapper,
@@ -750,12 +751,12 @@
 
   .egg-wrapper-found::after {
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     left: 0;
     width: 25px;
     height: 25px;
     content: '';
-    background-image: url(https://www.mousehuntgame.com/images/ui/events/winter_hunt_2013/checkmark.png?asset_cache_version=2);
+    background-image: url(https://www.mousehuntgame.com/images/ui/hud/meadow_checkmark.png?asset_cache_version=2);
     filter: drop-shadow(5px -1px 5px #19e718);
     background-repeat: no-repeat;
     background-size: contain;
@@ -820,12 +821,8 @@
     box-shadow: inset 1px 1px 1px 0 #daa756;
   }
 
-  .egginput::placeholder {
-    color: #b58e51;
-  }
-
   .egg-search-input::placeholder {
-    color: #b58e51;
+    color: #b58e51 !important;
   }
 
   .egg-tool-image {
@@ -1020,24 +1017,24 @@
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
-  .seh-image-saved-hidden::after {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 80px;
-    height: 15px;
-    margin-top: 90px;
-    margin-left: 10px;
-    color: #8e784f;
-    text-align: center;
-    content: "Saved!";
-    background-image: url(https://www.mousehuntgame.com/images/ui/events/winter_hunt_2013/checkmark.png?asset_cache_version=2);
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0;
-    transition: none;
-  }
+    .seh-image-saved-hidden::after {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 80px;
+      height: 15px;
+      margin-top: 90px;
+      margin-left: 10px;
+      color: #8e784f;
+      text-align: center;
+      content: "Saved!";
+      background-image: url(https://www.mousehuntgame.com/images/ui/events/winter_hunt_2013/checkmark.png?asset_cache_version=2);
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0;
+      transition: none;
+    }
   }
 
   .seh-image-saved-hidden::after {
@@ -1069,6 +1066,61 @@
   .seh-image-saved::after {
     opacity: 1;
     transition: .125s linear;
+  }
+
+  .expanded-eggs {
+    display: flex;
+    flex-wrap: wrap;
+    background: #f6f3eb;
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    padding: 25px;
+    border: 1px solid #7b581f;
+    left: -50%;
+    right: -50%;
+    margin: 0 auto;
+    height: auto;
+    width: 800px;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  .expanded-eggs-close {
+    display: block;
+    color: #b0833d;
+    font-size: 12px;
+    position: absolute;
+    top: 11px;
+    background-color: #f6f3eb;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border: 1px solid #7b581f;
+    border-top-color: #f6f3eb;
+    padding: 5px 20px;
+    right: -40px;
+    transform: rotate(270deg);
+    pointer-events: all;
+  }
+
+  .expanded-eggs-close:hover {
+    background-color: #cebe92;
+    border-top-color: #cebe92;
+    color: #f6f3eb;
+    text-decoration: none;
+  }
+
+  .welcome-expand-button {
+    margin: 0 auto;
+    display: inline-block;
+    color: #b38741;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
   }
   `);
 
@@ -1239,7 +1291,12 @@
     description.classList.add('seh-image-saved-hidden');
 
     const descriptionImage = document.createElement('img');
-    descriptionImage.src = eggImages[ egg.type ] || egg.thumb;
+    if (eggImages[ egg.type ]) {
+      descriptionImage.src = eggImages[ egg.type ];
+      descriptionImage.setAttribute('crossorigin', 'anonymous');
+    } else {
+      descriptionImage.src = egg.thumb;
+    }
     descriptionImage.alt = egg.name;
     descriptionImage.classList.add('right-thumb');
 
@@ -1280,7 +1337,7 @@
 
     const collectedText = makeElement('div', 'collected-text');
     if (isFound(egg)) {
-      makeElement('div', 'egg-collected', `You have collected this egg, <a href="#" onclick="hg.views.ItemView.show('${egg.type}'); return false;">${egg.quantity} in your inventory</a>.`, collectedText);
+      makeElement('div', 'egg-collected', `You have <a href="#" onclick="hg.views.ItemView.show('${egg.type}'); return false;">${egg.quantity} in your inventory</a>.`, collectedText);
     } else {
       makeElement('div', 'egg-not-collected', 'You have not collected this egg.', collectedText);
     }
@@ -1436,6 +1493,8 @@
 
       categoriesWrapper.appendChild(categoryWrapper);
     });
+
+    makeElement('a', 'welcome-expand-button', 'Expand egg summary', categoriesWrapper);
 
     rightSideWrapper.appendChild(categoriesWrapper);
 
@@ -1609,6 +1668,37 @@
     });
   };
 
+  const addExpandAction = () => {
+    const expandButton = document.querySelector('.welcome-expand-button');
+    const bookWrapper = document.querySelector('.book-wrapper');
+    if (expandButton && bookWrapper) {
+      expandButton.addEventListener('click', () => {
+        bookWrapper.classList.toggle('book-wrapper-expanded');
+
+        const welcomeEggs = document.querySelectorAll('.book-welcome-categories .category-egg-wrapper');
+        if (welcomeEggs) {
+          const expandedEggs = document.createElement('div');
+          expandedEggs.classList.add('expanded-eggs');
+
+          welcomeEggs.forEach((egg) => {
+            expandedEggs.appendChild(egg.cloneNode(true));
+          });
+
+          const close = document.createElement('a');
+          close.classList.add('expanded-eggs-close');
+          close.innerText = '✕';
+          close.addEventListener('click', () => {
+            expandedEggs.remove();
+          });
+
+          expandedEggs.appendChild(close);
+
+          bookWrapper.appendChild(expandedEggs);
+        }
+      });
+    }
+  };
+
   const bookPopup = async () => {
     popup = new jsDialog();
     popup.setTemplate('ajax');
@@ -1654,6 +1744,7 @@
     addSearchAction();
     addFilterAction();
     addBackAction();
+    addExpandAction();
   };
 
   /**
