@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.4.6
+// @version      1.4.7
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -1751,6 +1751,10 @@
    * Add the egg icon.
    */
   const addEggIcon = () => {
+    if (! getSetting('seh-show-egg', true)) {
+      return;
+    }
+
     const menu = document.querySelector('.mousehuntHud-menu');
     if (! menu) {
       return;
@@ -1961,6 +1965,15 @@
     'seh-uem-mode',
     false,
     'Track collected/uncollected by whether or not they\'re in your inventory.',
+    settingSection,
+    tab
+  );
+
+  addSetting(
+    'Show an egg next to the shield',
+    'seh-show-egg',
+    true,
+    'Shows a random egg next to your shield. Click it to change to a random one.',
     settingSection,
     tab
   );
