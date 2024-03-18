@@ -482,7 +482,7 @@
 
     // Removed backgrounds
     '2011_spring_hunt_egg_6': 'https://i.mouse.rip/2011-spring-hunt.png',
-    black_widow_egg_convertible: 'https://i.mouse.rip/black-widow-egg.png',
+    black_widow_egg_convertible: 'https://i.mouse.rip/egg-black-widow.png',
     caring_egg_convertible: 'https://i.mouse.rip/caring-egg.png',
     friendly_egg_convertible: 'https://i.mouse.rip/friendly-egg.png',
     ful_mina_egg_convertible: 'https://i.mouse.rip/ful-mina-egg.png',
@@ -1293,7 +1293,6 @@
     const descriptionImage = document.createElement('img');
     if (eggImages[ egg.type ]) {
       descriptionImage.src = eggImages[ egg.type ];
-      descriptionImage.setAttribute('crossorigin', 'anonymous');
     } else {
       descriptionImage.src = egg.thumb;
     }
