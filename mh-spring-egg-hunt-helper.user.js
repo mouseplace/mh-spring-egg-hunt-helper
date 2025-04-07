@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.5.1
+// @version      1.5.2
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -877,7 +877,7 @@
   .egg-close {
     position: absolute;
     bottom: 50px;
-    left: 288px;
+    left: 138px;
     width: 168px;
     height: 63px;
     font-size: 17px;
@@ -892,6 +892,27 @@
 
   .egg-close:hover,
   .egg-close:focus {
+    text-decoration: none;
+  }
+
+  .egg-export {
+    position: absolute;
+    bottom: 50px;
+    left: 438px;
+    width: 168px;
+    height: 63px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 51px;
+    color: #d7eecb;
+    text-align: center;
+    text-shadow: 1px 1px 2px #1a2502;
+    background-image: url(https://www.mousehuntgame.com/images/ui/hud/folklore_forest_region/dialog/continue_button_frame.png?asset_cache_version=2);
+    background-position: 0 100%;
+  }
+
+  .egg-export:hover,
+  .egg-export:focus {
     text-decoration: none;
   }
 
@@ -1698,6 +1719,25 @@
     }
   };
 
+  function createExportRow(egg){
+    let count = 0;
+    if(egg.quantity>0){
+      count = 1
+    }
+    return `${egg.name}\t${count}`;
+  }
+  function exportAllMyData() {
+
+    let fullOutput = "";
+    Object.values(eggsData).forEach(egg => {
+      fullOutput += createExportRow(egg) + "\n";
+    });
+
+    navigator.clipboard.writeText(fullOutput)
+        .then(() => console.log("Copied to clipboard:\n"))
+        .catch(err => console.error("Failed to copy text: ", err));
+  }
+
   const bookPopup = async () => {
     popup = new jsDialog();
     popup.setTemplate('ajax');
@@ -1735,10 +1775,15 @@
       ${leftWrapper.outerHTML}
       ${rightSideFull.outerHTML}
       <a href="#" class="halloweenBoilingCauldronRecipeView-doneButton egg-close" onclick="activejsDialog.hide(); return false;">Close</a>
+      <a href="#" id="egg-export-button" class="halloweenBoilingCauldronRecipeView-doneButton egg-export">Export</a>
     </div>`);
 
     popup.show();
 
+    document.getElementById('egg-export-button').addEventListener('click', function() {
+      exportAllMyData(eggs);
+    });
+    
     addEggShowAction();
     addSearchAction();
     addFilterAction();
