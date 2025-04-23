@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         🐭️ MouseHunt - Spring Egg Hunt Helper
-// @version      1.5.0
+// @version      1.5.2
 // @description  Make the Spring Egg Hunt / Eggscavator interface better.
 // @license      MIT
 // @author       bradp
@@ -482,7 +482,7 @@
 
     // Removed backgrounds
     '2011_spring_hunt_egg_6': 'https://i.mouse.rip/2011-spring-hunt.png',
-    black_widow_egg_convertible: 'https://i.mouse.rip/black-widow-egg.png',
+    black_widow_egg_convertible: 'https://i.mouse.rip/egg-black-widow.png',
     caring_egg_convertible: 'https://i.mouse.rip/caring-egg.png',
     friendly_egg_convertible: 'https://i.mouse.rip/friendly-egg.png',
     ful_mina_egg_convertible: 'https://i.mouse.rip/ful-mina-egg.png',
@@ -877,7 +877,7 @@
   .egg-close {
     position: absolute;
     bottom: 50px;
-    left: 288px;
+    left: 138px;
     width: 168px;
     height: 63px;
     font-size: 17px;
@@ -892,6 +892,27 @@
 
   .egg-close:hover,
   .egg-close:focus {
+    text-decoration: none;
+  }
+
+  .egg-export {
+    position: absolute;
+    bottom: 50px;
+    left: 438px;
+    width: 168px;
+    height: 63px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 51px;
+    color: #d7eecb;
+    text-align: center;
+    text-shadow: 1px 1px 2px #1a2502;
+    background-image: url(https://www.mousehuntgame.com/images/ui/hud/folklore_forest_region/dialog/continue_button_frame.png?asset_cache_version=2);
+    background-position: 0 100%;
+  }
+
+  .egg-export:hover,
+  .egg-export:focus {
     text-decoration: none;
   }
 
@@ -1232,23 +1253,23 @@
     const aquireListWrapper = makeElement('div', 'aqure-list-wrapper');
     let tipShown = false;
 
-    if (ways[ egg.type ] !== undefined) {
-      if (ways[ egg.type ].text !== undefined) {
-        makeAquireSection(egg, '', [ways[ egg.type ].text], aquireListWrapper, 'tip');
+    if (ways[egg.type] !== undefined) {
+      if (ways[egg.type].text !== undefined) {
+        makeAquireSection(egg, '', [ways[egg.type].text], aquireListWrapper, 'tip');
         tipShown = true;
       }
     }
 
-    if (ways[ egg.type ] !== undefined) {
-      if (Array.isArray(ways[ egg.type ].mice)) {
-        makeAquireSection(egg, 'Can be dropped from:', ways[ egg.type ].mice, aquireListWrapper, 'mice');
+    if (ways[egg.type] !== undefined) {
+      if (Array.isArray(ways[egg.type].mice)) {
+        makeAquireSection(egg, 'Can be dropped from:', ways[egg.type].mice, aquireListWrapper, 'mice');
       } else if (! tipShown) {
-        makeAquireSection(egg, '', [ways[ egg.type ]], aquireListWrapper, 'tip');
+        makeAquireSection(egg, '', [ways[egg.type]], aquireListWrapper, 'tip');
       }
     }
 
-    if (environments[ egg.type ] !== undefined && environments[ egg.type ].length > 0) {
-      makeAquireSection(egg, 'Can be found in:', environments[ egg.type ], aquireListWrapper, 'location');
+    if (environments[egg.type] !== undefined && environments[egg.type].length > 0) {
+      makeAquireSection(egg, 'Can be found in:', environments[egg.type], aquireListWrapper, 'location');
     }
 
     wrapper.appendChild(aquireListWrapper);
@@ -1272,7 +1293,7 @@
       backButton.classList.remove('egg-back-button-hidden');
     }
 
-    const egg = eggsData[ eggType ];
+    const egg = eggsData[eggType];
 
     const detailsWrapper = makeElement('div', 'book-right-side');
     const detailHeader = makeElement('div', 'right-header');
@@ -1291,9 +1312,8 @@
     description.classList.add('seh-image-saved-hidden');
 
     const descriptionImage = document.createElement('img');
-    if (eggImages[ egg.type ]) {
-      descriptionImage.src = eggImages[ egg.type ];
-      descriptionImage.setAttribute('crossorigin', 'anonymous');
+    if (eggImages[egg.type]) {
+      descriptionImage.src = eggImages[egg.type];
     } else {
       descriptionImage.src = egg.thumb;
     }
@@ -1355,10 +1375,10 @@
     eggs.environments.forEach((environment) => {
       if (environment.egg_types.length > 0) {
         environment.egg_types.forEach((eggType) => {
-          if (environments[ eggType ] !== undefined) {
-            environments[ eggType ].push(environment);
+          if (environments[eggType] !== undefined) {
+            environments[eggType].push(environment);
           } else {
-            environments[ eggType ] = [environment];
+            environments[eggType] = [environment];
           }
         });
       }
@@ -1366,7 +1386,7 @@
 
     // Deduplicate environments
     Object.keys(environments).forEach((eggType) => {
-      environments[ eggType ] = [...new Set(environments[ eggType ])];
+      environments[eggType] = [...new Set(environments[eggType])];
     });
 
     // sort eggs.eggs alphabetically
@@ -1395,7 +1415,7 @@
       const itemWrapperImage = makeElement('div', 'egg-wrapper-image');
 
       const eggImage = document.createElement('img');
-      eggImage.src = eggImages[ egg.type ] || egg.thumb;
+      eggImage.src = eggImages[egg.type] || egg.thumb;
       eggImage.alt = egg.name;
 
       const eggName = document.createElement('span');
@@ -1411,7 +1431,7 @@
       itemAction.href = '#';
       itemAction.classList.add('find-egg');
       itemAction.setAttribute('data-type', egg.type);
-      eggsData[ egg.type ] = egg;
+      eggsData[egg.type] = egg;
 
       itemAction.innerText = 'View Details →';
 
@@ -1456,31 +1476,31 @@
       const categoryWrapper = makeElement('div', 'category-wrapper');
 
       const categoryTitle = makeElement('h4', 'category-title');
-      categoryTitle.innerText = eggs.categories[ categoryKey ].name;
+      categoryTitle.innerText = eggs.categories[categoryKey].name;
 
       categoryWrapper.appendChild(categoryTitle);
 
       const categorySubTitle = makeElement('h5', 'category-subtitle');
-      categorySubTitle.innerText = eggs.categories[ categoryKey ].description;
+      categorySubTitle.innerText = eggs.categories[categoryKey].description;
 
       categoryWrapper.appendChild(categorySubTitle);
 
       const categoryEggs = makeElement('div', 'category-eggs');
 
-      eggs.categories[ categoryKey ].egg_types.forEach((eggType) => {
+      eggs.categories[categoryKey].egg_types.forEach((eggType) => {
         const eggWrapper = makeElement('div', 'category-egg-wrapper');
         const eggLink = makeElement('a', 'egg-action');
         eggLink.href = '#';
         eggLink.classList.add('welcome-egg-action');
 
         const eggImage = makeElement('img', 'category-egg-image');
-        eggImage.src = eggImages[ eggsData[ eggType ].type ] || eggsData[ eggType ].thumb;
+        eggImage.src = eggImages[eggsData[eggType].type] || eggsData[eggType].thumb;
 
         eggLink.setAttribute('data-type', eggType);
 
-        eggLink.setAttribute('title', eggsData[ eggType ].name);
+        eggLink.setAttribute('title', eggsData[eggType].name);
 
-        if (! isFound(eggsData[ eggType ])) {
+        if (! isFound(eggsData[eggType])) {
           eggWrapper.classList.add('egg-wrapper-unfound');
         }
 
@@ -1699,6 +1719,21 @@
     }
   };
 
+  function createExportRow(egg) {
+    return `${egg.name}\t${egg.quantity > 0 ? 1 : 0}`;
+  }
+
+  function exportAllMyData() {
+    let fullOutput = '';
+    Object.values(eggsData).forEach((egg) => {
+      fullOutput += createExportRow(egg) + '\n';
+    });
+
+    navigator.clipboard.writeText(fullOutput)
+      .then(() => console.log('Copied to clipboard:\n')) // eslint-disable-line no-console
+      .catch((err) => console.error('Failed to copy text: ', err)); // eslint-disable-line no-console
+  }
+
   const bookPopup = async () => {
     popup = new jsDialog();
     popup.setTemplate('ajax');
@@ -1736,9 +1771,14 @@
       ${leftWrapper.outerHTML}
       ${rightSideFull.outerHTML}
       <a href="#" class="halloweenBoilingCauldronRecipeView-doneButton egg-close" onclick="activejsDialog.hide(); return false;">Close</a>
+      <a href="#" id="egg-export-button" class="halloweenBoilingCauldronRecipeView-doneButton egg-export">Copy to clipboard</a>
     </div>`);
 
     popup.show();
+
+    document.getElementById('egg-export-button').addEventListener('click', function () {
+      exportAllMyData(eggs);
+    });
 
     addEggShowAction();
     addSearchAction();
@@ -1786,19 +1826,19 @@
     }
 
     const scrambles = createPopup({
-      title: resp.items[ 0 ].name,
-      content: resp.items[ 0 ].message,
+      title: resp.items[0].name,
+      content: resp.items[0].message,
       hasCloseButton: true,
       template: 'singleItemLeft',
       show: false,
     });
 
     scrambles.setAttributes({
-      className: resp.items[ 0 ].type
+      className: resp.items[0].type
     });
 
     scrambles.addToken('{*items*}', {
-      0: resp.items[ 0 ]
+      0: resp.items[0]
     }, 'imgArray');
 
     scrambles.show();
@@ -1810,7 +1850,7 @@
    * @return {string} The URL of the egg image.
    */
   const getRandomEggImage = () => {
-    return Object.values(eggImages)[ Math.floor(Math.random() * Object.values(eggImages).length) ];
+    return Object.values(eggImages)[Math.floor(Math.random() * Object.values(eggImages).length)];
   };
 
   /**
@@ -1989,7 +2029,7 @@
       e.preventDefault();
       const scale = e.deltaY > 0 ? 0.9 : 1.1;
       const transform = icon.style.transform;
-      const scaleValue = transform ? transform.match(/scale\((\d+\.?\d*)\)/)[ 1 ] : 1;
+      const scaleValue = transform ? transform.match(/scale\((\d+\.?\d*)\)/)[1] : 1;
       let newScale = scaleValue * scale;
 
       // don't let it get too big or too small
