@@ -1,4 +1,4 @@
-# 🐭️ Mousehunt - Spring Egg Hunt Helper
+# 🐭️ MouseHunt - Spring Egg Hunt Helper
 
 A Userscript for [MouseHunt](https://mousehuntgame.com) that makes the Spring Egg Hunt / Eggscavator interface better.
 
